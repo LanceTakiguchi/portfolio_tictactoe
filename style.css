@@ -2,10 +2,14 @@
     font-family: titleFont;
     src: url("assets/EmpanadaItalic.otf");
 }
+*{
+    font-family: titleFont, sans-serif;
+}
 /* HEADER */
 header > div {
     width: 30%;
     border: 1px solid black;
+    border-radius: 0 30% 30% 0;
     display: inline-block;
     height: 98%;
     background-color: #0affa5;
@@ -14,15 +18,21 @@ header{
     width: 100%;
     background-color: #b8d4c6;
     height: 15vh;
-}
-p, h1, div{
-    font-family: titleFont, sans-serif;
     text-align: center;
 }
-
+header h1{
+    display: inline-block;
+    font-size: 4vw;
+}
+#team1{
+    float: left;
+}
+#team2{
+    float: right;
+    border-radius: 30% 0 0 30% ;
+}
 /*GAMEBOARD*/
 main{
-    border: 1px solid black;
     height: 80vh;
     background: rgba(0, 0, 0, 0.6);
 }
@@ -30,20 +40,32 @@ main{
     width: 80%;
     border: 1px solid black;
     height: 100%;
-    background-color: #32050C;
     float: right;
 }
 .space {
-    height: 100%;
+    height: 25%;
     width: 30%;
     border: 1px solid black;
     display: inline-block;
     background-color: #283733;
-    margin-left: 2%;
+    margin: 1%;
+    float: right;
 }
 body{
     background: url("assets/1-32_overview_1.png");
 }
 .row{
     height: 33%;
+}
+/******************/
+section{
+    background-color: #6a6969;
+    height: 80vh;
+}
+section h1{
+    text-align: center;
+    /* display: inline-block; */
+    width: 50%;
+    margin: auto;
+    font-size: 6rem;
 }
