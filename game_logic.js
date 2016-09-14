@@ -225,9 +225,28 @@ function check_for_win(board, win_condition){
     var player_number = null;
     for(var outer_index = 0; outer_index < board.length; outer_index++){
         for(var inner_index = 0; inner_index < board[outer_index].length; inner_index++){
-            if(!zero_test(outer_index, inner_index)){
+            if(!zero_test(outer_index, inner_index)){ //** If the current cell is not an place-holding 0, but actually a piece.
                 player_number = board[outer_index][inner_index]; // ** Grabs which player we are currently checking for
+                if(
+                check_north(player_number, outer_index, inner_index) ||
+                check_north_east(player_number, outer_index, inner_index) ||
+                check_north_west(player_number, outer_index, inner_index) ||
+                check_east(player_number, outer_index, inner_index) ||
+                check_west(player_number, outer_index, inner_index) ||
+                check_south(player_number, outer_index, inner_index) ||
+                check_south_east(player_number, outer_index, inner_index) ||
+                check_south_west(player_number, outer_index, inner_index)
+            ){return player_number;} // ** Returns which player is winning, player 1 or 2
             }
         }
     }
+    for(var outer_index = 0; outer_index < board.length; outer_index++){
+        for(var inner_index = 0; inner_index < board[outer_index].length; inner_index++){
+            if(zero_test(outer_index, inner_index)){ //** If the current cell is not an place-holding 0, but actually a piece.
+               return 0;
+            }
+        }
+    }
+
+    return 0; // ** Returning 0 means the game is not over yet
 }
