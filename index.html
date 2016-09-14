@@ -3,30 +3,98 @@
 <head>
     <title>TIC TAC WARS</title>
     <link rel="stylesheet" href="style.css">
-    <script></script>
+    <script rel="game_logic.js"></script>
 </head>
 <body>
-<header>
-    <div></div>
-</header>
-<main>
-    <div id="gameboard">
-        <div class="row">
-            <div class="space"></div>
-            <div class="space"></div>
-            <div class="space"></div>
+    <header>
+        <div id="team1">
+            <img src="assets/portrait.png">
+            <h1>TEAM 1</h1>
         </div>
-        <div class="row">
-            <div class="space"></div>
-            <div class="space"></div>
-            <div class="space"></div>
+        <h1>TIC TAC ADVANCE</h1>
+        <div id="team2">
+            <img src="assets/portrait.png">
+            <h1>TEAM 1</h1>
         </div>
-        <div class="row">
-            <div class="space"></div>
-            <div class="space"></div>
-            <div class="space"></div>
+    </header>
+    <main>
+        <div class="space">
+            <img src="assets/tank.png">
         </div>
-    </div>
-</main>
+        <div class="space">
+            <img src="assets/tank.png">
+        </div>
+        <div class="space">
+            <img src="assets/tank.png">
+        </div>
+        <div class="space">
+            <img src="assets/tank.png">
+        </div>
+        <div class="space">
+            <img src="assets/tank.png">
+        </div>
+        <div class="space">
+            <img src="assets/tank.png">
+        </div>
+        <div class="space">
+            <img src="assets/tank.png">
+        </div>
+        <div class="space">
+            <img src="assets/tank.png">
+        </div>
+        <div class="space">
+            <img src="assets/tank.png">
+        </div>
+    </main>
+    <section class="menu">
+        <h1>TIC TAC ADVANCE</h1>
+        <section>
+            <div>
+                <p>Player One:</p>
+                <input type="text" name="">
+            </div>
+            <div>
+                <p>Player Two:</p>
+                <input type="text" name="">
+            </div>
+        </section>
+        <section>
+            <ul>
+                <li>Choose your board size</li>
+                <li>
+                    <button type="button">3x3</button>
+                </li>
+                <li>
+                    <button type="button">9x9</button>
+                </li>
+                <li>
+                    <button type="button">20x20</button>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h1>Pick your CO</h1>
+            <ul>
+                <li>
+                    <img src="assets/tank.png">
+                </li>
+                <li>
+                    <img src="assets/tank.png">
+                </li>
+                <li>
+                    <img src="assets/tank.png">
+                </li>
+                <li>
+                    <img src="assets/tank.png">
+                </li>
+            </ul>
+        </section>
+    </section>
+    <section class="menu">
+        <h1>PLAYER 1 WINS!</h1>
+        <h1>PLAYER 2 WINS!</h1>
+        <h1>DRAW</h1>
+        <button>Play Again?</button>
+    </section>
 </body>
 </html>
