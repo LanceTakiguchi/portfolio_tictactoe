@@ -76,13 +76,15 @@ function valid_move(board, row, column){
 }
 /**
  * Places a piece into the array.
+ * @param {Object[]} board A 2d array that is the board to have a piece placed into
  * @param {number} player A number that says which player's piece to place into the 2d board array.
  * @param {number} row A number that indexes the row array; index for the outer array.
  * @param {number} column A number that indexes the column array; index for the inner array.
  * @return {Object[]} Returns the global 2d array with the updated piece placed into it.
  */
-function set_piece(player, row, column){
-
+function set_piece(board, player, row, column){
+    board[row][column] = player;
+    return board;
 }
 /**
  * Checks in all 8 directions to see if the win_condition has been meet
