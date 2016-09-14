@@ -1,0 +1,49 @@
+@font-face {
+    font-family: titleFont;
+    src: url("assets/EmpanadaItalic.otf");
+}
+/* HEADER */
+header > div {
+    width: 30%;
+    border: 1px solid black;
+    display: inline-block;
+    height: 98%;
+    background-color: #0affa5;
+}
+header{
+    width: 100%;
+    background-color: #b8d4c6;
+    height: 15vh;
+}
+p, h1, div{
+    font-family: titleFont, sans-serif;
+    text-align: center;
+}
+
+/*GAMEBOARD*/
+main{
+    border: 1px solid black;
+    height: 80vh;
+    background: rgba(0, 0, 0, 0.6);
+}
+#gameboard{
+    width: 80%;
+    border: 1px solid black;
+    height: 100%;
+    background-color: #32050C;
+    float: right;
+}
+.space {
+    height: 100%;
+    width: 30%;
+    border: 1px solid black;
+    display: inline-block;
+    background-color: #283733;
+    margin-left: 2%;
+}
+body{
+    background: url("assets/1-32_overview_1.png");
+}
+.row{
+    height: 33%;
+}
