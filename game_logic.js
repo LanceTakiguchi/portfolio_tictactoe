@@ -118,19 +118,6 @@ function check_for_win(board, win_condition){
      * @param initial_column The starting column index of the spot we are starting this check from
      * @return {boolean} Tells if there was a winning amount of pieces in a row or not
      */
-    function check_north(player, initial_row, initial_column){
-        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
-        for(;initial_column >= 0; initial_column--){
-            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
-                return false;
-            }
-            count_correct++;
-            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
-                return true;
-            }
-        }
-        return false; //** If the index is now negative and therefore stopped searching
-    }
     function check_south(player, initial_row, initial_column){
         var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
         for(;initial_column < board.length; initial_column++){
@@ -147,45 +134,6 @@ function check_for_win(board, win_condition){
     function check_east(player, initial_row, initial_column){
         var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
         for(;initial_row < board.length; initial_row++){
-            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
-                return false;
-            }
-            count_correct++;
-            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
-                return true;
-            }
-        }
-        return false; //** If the index is now negative and therefore stopped searching
-    }
-    function check_west(player, initial_row, initial_column){
-        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
-        for(;initial_row <= 0; initial_row--){
-            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
-                return false;
-            }
-            count_correct++;
-            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
-                return true;
-            }
-        }
-        return false; //** If the index is now negative and therefore stopped searching
-    }
-    function check_north_east(player, initial_row, initial_column){
-        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
-        for(;initial_column >= 0 && initial_row < board.length; initial_column--, initial_row++){
-            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
-                return false;
-            }
-            count_correct++;
-            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
-                return true;
-            }
-        }
-        return false; //** If the index is now negative and therefore stopped searching
-    }
-    function check_north_west(player, initial_row, initial_column){
-        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
-        for(;initial_column >= 0 && initial_row >= 0; initial_column--, initial_row--){
             if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
@@ -229,11 +177,7 @@ function check_for_win(board, win_condition){
             if(!zero_test(outer_index, inner_index)){ //** If the current cell is not an place-holding 0, but actually a piece.
                 player_number = board[outer_index][inner_index]; // ** Grabs which player we are currently checking for
                 if(
-                check_north(player_number, outer_index, inner_index) ||
-                check_north_east(player_number, outer_index, inner_index) ||
-                check_north_west(player_number, outer_index, inner_index) ||
                 check_east(player_number, outer_index, inner_index) ||
-                check_west(player_number, outer_index, inner_index) ||
                 check_south(player_number, outer_index, inner_index) ||
                 check_south_east(player_number, outer_index, inner_index) ||
                 check_south_west(player_number, outer_index, inner_index)
