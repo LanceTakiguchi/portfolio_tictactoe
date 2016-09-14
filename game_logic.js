@@ -30,7 +30,10 @@ function coin_toss(do_flip){
  * @return {number} Returns the number in a row needed to win.
  */
 function win_condition(set_number_to_win){
-
+    if(typeof set_number_to_win === "number"){ //** If set_number_to_win is not set to a number, typeof is undefined and does not set the global variable
+        to_win_number_condition = set_number_to_win;
+    }
+    return to_win_number_condition;
 }
 /**
  * If asked, sets the number of rows/columns on the game board. Always returns what the board size is.
