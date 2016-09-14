@@ -88,8 +88,146 @@ function set_piece(board, player, row, column){
 }
 /**
  * Checks in all 8 directions to see if the win_condition has been meet
+ * @param {Object[]} board A 2d array that is the board to search for a winning streak
+ * @param {number} win_condition A number that tells how many in a row in order to win
  * @return {number} 0 = No winner yet, 1 = player 1 has won, 2 = player 2 has won, -1 = a tie
+ * Note: indexing north: row, decreasing column
+ * Note: indexing north-east: increasing row, decreasing column
+ * Note: indexing east: increasing row, column
+ * Note: indexing south-east: increasing row, increasing column
+ * Note: indexing south: row, increasing column
+ * Note: indexing south-west: decreasing row, increasing column
+ * Note: indexing west: decreasing row, column
+ * Note: indexing north-west: decreasing row, decreasing column
  */
-function check_for_win(win_condition){
+function check_for_win(board, win_condition){
+    /**
+     * Checks to see if the value in the selected board space is the placeholder, 0
+     * @param outer Row index
+     * @param inner Column index
+     * @return {boolean}
+     */
+    function zero_test(outer, inner){
+        return board[outer][inner] === 0;
+    }
 
+    /**
+     * Checks to see if there is the winning amount of piece in a row above it.
+     * @param player The current player's number that we are checking for
+     * @param initial_row The starting row index of the spot we are starting this check from
+     * @param initial_column The starting column index of the spot we are starting this check from
+     * @return {boolean} Tells if there was a winning amount of pieces in a row or not
+     */
+    function check_north(player, initial_row, initial_column){
+        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
+        for(;initial_column >= 0; initial_column--){
+            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
+                return false;
+            }
+            count_correct++;
+            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
+                return true;
+            }
+        }
+        return false; //** If the index is now negative and therefore stopped searching
+    }
+    function check_south(player, initial_row, initial_column){
+        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
+        for(;initial_column <= win_condition; initial_column++){
+            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
+                return false;
+            }
+            count_correct++;
+            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
+                return true;
+            }
+        }
+        return false; //** If the index is now negative and therefore stopped searching
+    }
+    function check_east(player, initial_row, initial_column){
+        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
+        for(;initial_row <= win_condition; initial_row++){
+            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
+                return false;
+            }
+            count_correct++;
+            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
+                return true;
+            }
+        }
+        return false; //** If the index is now negative and therefore stopped searching
+    }
+    function check_west(player, initial_row, initial_column){
+        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
+        for(;initial_row <= 0; initial_row--){
+            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
+                return false;
+            }
+            count_correct++;
+            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
+                return true;
+            }
+        }
+        return false; //** If the index is now negative and therefore stopped searching
+    }
+    function check_north_east(player, initial_row, initial_column){
+        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
+        for(;initial_column >= 0 && initial_row <= win_condition; initial_column--, initial_row++){
+            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
+                return false;
+            }
+            count_correct++;
+            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
+                return true;
+            }
+        }
+        return false; //** If the index is now negative and therefore stopped searching
+    }
+    function check_north_west(player, initial_row, initial_column){
+        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
+        for(;initial_column >= 0 && initial_row >= 0; initial_column--, initial_row--){
+            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
+                return false;
+            }
+            count_correct++;
+            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
+                return true;
+            }
+        }
+        return false; //** If the index is now negative and therefore stopped searching
+    }
+    function check_south_east(player, initial_row, initial_column){
+        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
+        for(;initial_column <= win_condition && initial_row <= win_condition; initial_column++, initial_row++){
+            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
+                return false;
+            }
+            count_correct++;
+            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
+                return true;
+            }
+        }
+        return false; //** If the index is now negative and therefore stopped searching
+    }
+    function check_south_west(player, initial_row, initial_column){
+        var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
+        for(;initial_column <= win_condition && initial_row > 0; initial_column++, initial_row--){
+            if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
+                return false;
+            }
+            count_correct++;
+            if(count_correct === win_condition){ //** If the number of player pieces in a row is the same as needed to win
+                return true;
+            }
+        }
+        return false; //** If the index is now negative and therefore stopped searching
+    }
+    var player_number = null;
+    for(var outer_index = 0; outer_index < board.length; outer_index++){
+        for(var inner_index = 0; inner_index < board[outer_index].length; inner_index++){
+            if(!zero_test(outer_index, inner_index)){
+                player_number = board[outer_index][inner_index]; // ** Grabs which player we are currently checking for
+            }
+        }
+    }
 }
