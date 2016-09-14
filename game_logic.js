@@ -41,9 +41,29 @@ function win_condition(set_number_to_win){
  * @return {number} Returns the number of rows/columns are on the board.
  */
 function what_board_size(set_board_size){
-
+    if(typeof set_board_size === "number"){ //** If set_number_to_win is not set to a number, typeof is undefined and does not set the global variable
+        board_size = set_board_size;
+    }
+    return board_size;
 }
-
+/**
+ * Creates the board based on what the board_size is. Does so by editing the global variable board_2d_array
+ * @param {number} array_size Tells how many rows/columns to create
+ * @return {array} Returns a global 2d array that has an outer array (row array) that has the row arrays with column arrays with the rows where the columns hold place-holding value.
+ */
+function create_board(array_size){
+    var row_array = [];
+    var column_array = [];
+    for(var index  = 0; index < array_size; index++){ //** loop for the board_size.
+        row_array.push([]); //** add in zeros as place holders.
+    }
+    for(var outer_index  = 0; index < array_size; index++){ //** outer loop
+        for(var inner_index  = 0; index < array_size; index++) { //** inner loop
+            row_array[outer_index].push(0); //** put in 0s into the columns; for each inner loop, make a 0.
+        }
+    }
+    return row_array; //** returns a 2d array. row_array is an array that holds column_arrays that hold zeros.
+}
 /**
  * Places a piece into the array.
  * @param {number} player A number that says which player's piece to place into the 2d board array.
@@ -52,15 +72,6 @@ function what_board_size(set_board_size){
  * @return {array} Returns the global 2d array with the updated piece placed into it.
  */
 function set_piece(player, row, column){
-
-}
-
-/**
- * Creates the board based on what the board_size is. Does so by editing the global variable board_2d_array
- * @param {number} board_size Tells how many rows/columns to create
- * @return {array} Returns a global 2d array that has an outer array (row array) that has the row arrays with column arrays with the rows where the columns hold place-holding value.
- */
-function create_board(board_size){
 
 }
 /**
