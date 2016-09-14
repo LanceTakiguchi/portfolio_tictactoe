@@ -133,7 +133,7 @@ function check_for_win(board, win_condition){
     }
     function check_south(player, initial_row, initial_column){
         var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
-        for(;initial_column <= win_condition; initial_column++){
+        for(;initial_column < board.length; initial_column++){
             if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
@@ -146,7 +146,7 @@ function check_for_win(board, win_condition){
     }
     function check_east(player, initial_row, initial_column){
         var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
-        for(;initial_row <= win_condition; initial_row++){
+        for(;initial_row < board.length; initial_row++){
             if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
@@ -172,7 +172,7 @@ function check_for_win(board, win_condition){
     }
     function check_north_east(player, initial_row, initial_column){
         var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
-        for(;initial_column >= 0 && initial_row <= win_condition; initial_column--, initial_row++){
+        for(;initial_column >= 0 && initial_row < board.length; initial_column--, initial_row++){
             if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
@@ -198,7 +198,7 @@ function check_for_win(board, win_condition){
     }
     function check_south_east(player, initial_row, initial_column){
         var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
-        for(;initial_column <= win_condition && initial_row <= win_condition; initial_column++, initial_row++){
+        for(;initial_column < board.length && initial_row < board.length; initial_column++, initial_row++){
             if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
@@ -211,7 +211,7 @@ function check_for_win(board, win_condition){
     }
     function check_south_west(player, initial_row, initial_column){
         var count_correct = 0; // ** Holds how many in a row are the same as the player number being checked for
-        for(;initial_column <= win_condition && initial_row > 0; initial_column++, initial_row--){
+        for(;initial_column < board.length && initial_row > 0; initial_column++, initial_row--){
             if(board[initial_row][initial_column] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
@@ -223,6 +223,7 @@ function check_for_win(board, win_condition){
         return false; //** If the index is now negative and therefore stopped searching
     }
     var player_number = null;
+    //**Checking that for every player piece on the board, if it is part of the required amount in a row to win
     for(var outer_index = 0; outer_index < board.length; outer_index++){
         for(var inner_index = 0; inner_index < board[outer_index].length; inner_index++){
             if(!zero_test(outer_index, inner_index)){ //** If the current cell is not an place-holding 0, but actually a piece.
@@ -240,13 +241,13 @@ function check_for_win(board, win_condition){
             }
         }
     }
+    // ** Checking for a tie. Doing so by looking that the board no longer has place-holding 0s in any cell
     for(var outer_index = 0; outer_index < board.length; outer_index++){
         for(var inner_index = 0; inner_index < board[outer_index].length; inner_index++){
             if(zero_test(outer_index, inner_index)){ //** If the current cell is not an place-holding 0, but actually a piece.
-               return 0;
+               return 0; // ** Returning 0 means the game is not over yet
             }
         }
     }
-
-    return 0; // ** Returning 0 means the game is not over yet
+    return -1; // ** If no one has one, and there is no more empty cells,
 }
