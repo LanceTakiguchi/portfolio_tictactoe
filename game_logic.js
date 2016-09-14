@@ -15,7 +15,7 @@ var board_2d_array = null; //**An array that holds arrays (the rows) where each 
 
 /**
  * Simulates a coin flip if given a true parameter. Whenever calls, returns the winner
- *@param {bool} do_flip A optional parameter that if set to true, will simulate a coin flip
+ *@param {boolean} do_flip A optional parameter that if set to true, will simulate a coin flip
  *@return {number} 1 or 2 that tells which player won the flip
 */
 function coin_toss(do_flip){
@@ -49,7 +49,7 @@ function what_board_size(set_board_size){
 /**
  * Creates the board based on what the board_size is. Does so by editing the global variable board_2d_array
  * @param {number} array_size Tells how many rows/columns to create
- * @return {array} Returns a global 2d array that has an outer array (row array) that has the row arrays with column arrays with the rows where the columns hold place-holding value.
+ * @return {Object[]} Returns a global 2d array that has an outer array (row array) that has the row arrays with column arrays with the rows where the columns hold place-holding value.
  */
 function create_board(array_size){
     var row_array = [];
@@ -66,19 +66,20 @@ function create_board(array_size){
 }
 /**
  * Checks to see if the address given is empty on the board.
+ * @param {Object[]} board A 2d array that is the board whose space is being checked for occupation status
  * @param {number} row A number that tells what row to index into.
  * @param {number} column A number that tells what column to index into.
- * @return {bool} Tells if a move was valid (true) or invalid (false).
+ * @return {boolean} Tells if a move was valid (true) or invalid (false).
  */
-function valid_move(row, column){
-
+function valid_move(board, row, column){
+    return board[row][column] === 0;
 }
 /**
  * Places a piece into the array.
  * @param {number} player A number that says which player's piece to place into the 2d board array.
  * @param {number} row A number that indexes the row array; index for the outer array.
  * @param {number} column A number that indexes the column array; index for the inner array.
- * @return {array} Returns the global 2d array with the updated piece placed into it.
+ * @return {Object[]} Returns the global 2d array with the updated piece placed into it.
  */
 function set_piece(player, row, column){
 
