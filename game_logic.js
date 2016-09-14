@@ -57,8 +57,8 @@ function create_board(array_size){
     for(var index  = 0; index < array_size; index++){ //** loop for the board_size.
         row_array.push([]); //** add in zeros as place holders.
     }
-    for(var outer_index  = 0; index < array_size; index++){ //** outer loop
-        for(var inner_index  = 0; index < array_size; index++) { //** inner loop
+    for(var outer_index  = 0; outer_index < array_size; outer_index++){ //** outer loop
+        for(var inner_index  = 0; inner_index < array_size; inner_index++) { //** inner loop
             row_array[outer_index].push(0); //** put in 0s into the columns; for each inner loop, make a 0.
         }
     }
