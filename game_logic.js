@@ -65,6 +65,15 @@ function create_board(array_size){
     return row_array; //** returns a 2d array. row_array is an array that holds column_arrays that hold zeros.
 }
 /**
+ * Checks to see if the address given is empty on the board.
+ * @param {number} row A number that tells what row to index into.
+ * @param {number} column A number that tells what column to index into.
+ * @return {bool} Tells if a move was valid (true) or invalid (false).
+ */
+function valid_move(row, column){
+
+}
+/**
  * Places a piece into the array.
  * @param {number} player A number that says which player's piece to place into the 2d board array.
  * @param {number} row A number that indexes the row array; index for the outer array.
