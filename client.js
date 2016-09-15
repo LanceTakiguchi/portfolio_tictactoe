@@ -6,8 +6,10 @@
  Objective: Create a online game of TicTacToe
  Prompt: https://github.com/Learning-Fuze/c10_tictactoe/blob/master/README.md
  */
-$(document).ready(function () {
 
+    // set the database reference
+var firebaseRef = firebase;
+$(document).ready(function () {
 
 // Initialize Firebase
     var config = {
@@ -19,10 +21,6 @@ $(document).ready(function () {
     };
     firebase.initializeApp(config);
 
-
-    // set the database reference
-    var firebaseRef = firebase;
-
     // check for anonymous login issues
     firebaseRef.auth().signInAnonymously().catch(function (error) {
         // Handle Errors here.
@@ -31,52 +29,14 @@ $(document).ready(function () {
         // ...
     });
 
-    var playingField = firebaseRef.database().ref('playingField');
-
-    playingField.set({
-        // enter the array here
-        //...
-        //...
-        //...
-    });
-
-    playingField.on('value', function (snapshot) {
-        // set variable to show here?
-    });
-
-
-    //Just some tests below
-    // var testExample = firebaseRef.database().ref('somewhere/');
-    // testExample.on("value", function (snapshot) {
-    //     console.log(snapshot.val());
-    // });
-    //
-    // $('#one').click(function () {
-    //     firebaseRef.database().ref("somewhere").set({
-    //         Player1: "X",
-    //         Player2: ""
-    //     });
-    // });
-    //
-    // $('#two').click(function () {
-    //     firebaseRef.database().ref("somewhere").set({
-    //         Player1: "X",
-    //         Player2: "O"
-    //     });
-    // });
-
-
-
-
 });
-
-
 
 var rowStartParam = "<tr>";
 var rowEndParam = "</tr>";
 var tdStartEndParam = "<td></td>";
 
 function makeBoard (boardSize) {
+
     $("#board > tbody").html('');
     var cell_size_percent = 100 / boardSize + '%';
     for (var i = 0; i < boardSize; i++) {
@@ -84,22 +44,29 @@ function makeBoard (boardSize) {
         for (var j = 0; j < boardSize; j++) {
             var boardCell = $("<td>", {
                 id: 'cell_' + i + '_' + j,
-                boardCol: i,
-                boardRow: j,
+                boardCol: j,
+                boardRow: i,
                 class: 'board_' + boardSize
             }).css({
                 height: cell_size_percent,
                 width: cell_size_percent
             });
             boardCell.on("click", function () {
-                console.log("click", $(this).attr('boardCol') + ',' + $(this).attr('boardRow'));
                 var cellClicked = $(this).attr('boardCol') + ',' + $(this).attr('boardRow');
+                var playingField = firebaseRef.database().ref('playingField');
 
-                var playingField = firebase.database().ref('playingField');
+
+                var num = cellClicked.indexOf(",");
+                var col = cellClicked.substring(0, num);
+                var row = cellClicked.substring(num + 1);
 
                 playingField.set({
-                    Player1: cellClicked,
-                    Player2: ""
+                    Column: col,
+                    Row: row
+                });
+
+                playingField.once('value').then(function (pieceLocation) {
+                    var game = pieceLocation.val();
                 });
             });
             boardRow.append(boardCell);
