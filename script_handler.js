@@ -6,17 +6,7 @@ var rowEndParam = "</tr>";
 var tdStartEndParam = "<td></td>"
 
 function makeBoard (boardSize) {
-    /*dave*/
-    // var boardRow = rowStartParam;
-    // for (var i = 0; i < boardSize; i++) {
-    //     boardRow += tdStartEndParam;
-    // }
-    // boardRow += rowEndParam;
-    // for (var j = 0; j < boardSize; j++) {
-    //     $("#board > tbody").append(boardRow);
-    // }
-    /*end dave*/
-    /*dan*/
+
 
 
     $("#board > tbody").html('');
@@ -26,17 +16,22 @@ function makeBoard (boardSize) {
         for (var j = 0; j < boardSize; j++) {
             var boardCell = $("<td>", {
                 id: 'cell_' + i + '_' + j,
+                boardCell: i,
+                boardRow: j,
                 class: 'board_'+boardSize
             }).css({
                 height: cell_size_percent,
                 width: cell_size_percent
             });
+            boardCell.on("click", function(){
+               console.log("click", $(this).attr('boardCell')+','+$(this).attr('boardRow'));
+
+            });
             boardRow.append(boardCell);
         }
         $("#board > tbody").append(boardRow);
+        setup_game(boardSize);
     }
-
-    /*end dan*/
 
 
 }
