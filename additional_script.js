@@ -1,6 +1,8 @@
 //TODO: FUNCTION TO RESET VARIABLE
 //TODO: FUNCTION TO APPLY/TOGGLE CLASSES?
 var hasPlayer = false;
+var playerTurn = 1;
+
 $(document).ready(function () {
     applyClickHandlers();
 });
@@ -12,7 +14,6 @@ function applyClickHandlers() {
     $("#co3").click(selectGameTiles);
     $("#co4").click(selectGameTiles);
     $("#startGame").click(startTheGame);
-    $("td").click(placePiece);
 }
 
 function selectedButton() {
@@ -30,7 +31,20 @@ function selectGameTiles() {
 function startTheGame() {
     $("#setUpMenu").addClass("hide");
 }
-
+function applyTableClickHandlers() {
+    $("td").click(placePiece);
+}
 function placePiece() {
-    $(this).append();
+    if (playerTurn === 1) {
+        var playerPiece = $("<img>").attr({
+            src: "assets/CO1tile.png"
+        });
+        playerTurn = 2;
+    } else{
+        var playerPiece = $("<img>").attr({
+            src: "assets/CO2tile.png"
+        });
+        playerTurn = 1;
+    }
+    $(this).append(playerPiece);
 }
