@@ -33,10 +33,13 @@ $(document).ready(function () {
 
 var rowStartParam = "<tr>";
 var rowEndParam = "</tr>";
-var tdStartEndParam = "<td></td>"
+var tdStartEndParam = "<td></td>";
 
 function makeBoard (boardSize) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 73d5d57b9efa9023bc88dc98e7f7d36f0411cf91
     $("#board > tbody").html('');
     var cell_size_percent = 100 / boardSize + '%';
     for (var i = 0; i < boardSize; i++) {
@@ -59,6 +62,7 @@ function makeBoard (boardSize) {
                     Player1: cellClicked,
                     Player2: ""
                 });
+<<<<<<< HEAD
 
                 playingField.once('value').then(function (snapshot) {
                     console.log(snapshot.val());
@@ -70,10 +74,13 @@ function makeBoard (boardSize) {
                     game = snapshot.val();
                 });
 
+=======
+>>>>>>> 73d5d57b9efa9023bc88dc98e7f7d36f0411cf91
             });
             boardRow.append(boardCell);
         }
         $("#board > tbody").append(boardRow);
         setup_game(boardSize);
     }
+    applyTableClickHandlers();
 }

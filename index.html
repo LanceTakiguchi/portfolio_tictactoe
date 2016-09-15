@@ -46,56 +46,44 @@
             <div id="coSelect">
                 <div class="highlight" id="co1">
                     <img src="assets/CO1.png" height="338px">
-                    <img src="assets/CO1tile.png">
+                    <img src="assets/CO1tile.png" id="co1tile">
                 </div>
                 <div class="highlight" id="co2">
                     <img src="assets/CO2.png" height="338px">
-                    <img src="assets/CO2tile.png">
+                    <img src="assets/CO2tile.png" id="co2tile">
                 </div>
                 <div class="highlight" id="co3">
                     <img src="assets/CO3.png">
-                    <img src="assets/CO3tile.png">
+                    <img src="assets/CO3tile.png" id="co3tile">
                 </div>
                 <div class="highlight" id="co4">
                     <img src="assets/CO4.png">
-                    <img src="assets/CO4tile.png">
+                    <img src="assets/CO4tile.png" id="co41tile">
                 </div>
             </div>
         </section>
         <button type="button" id="startGame">GO!!</button>
     </section>
-    <main id="gameplay_area">
+    <main id="gameplay_area" class="hide">
         <aside id="team1_display">
             <p>Orange Players Turn</p>
         </aside>
         <div class="gameBoard">
-
-
-
-
-
-                <table id="board">
-                    <tbody></tbody>
-                </table>
-
-
-
-
-
-
-
+            <table id="board">
+                <tbody></tbody>
+            </table>
         </div>
-        <aside id="team2_display">
+        <aside id="team2_display" class="turn">
             <p>Black Players Turn</p>
         </aside>
     </main>
-    <section class="menu">
+    <section class="menu" id="gameOver">
             <h1>CONGRATULATIONS ORANGE STAR FORCES</h1>
             <h1>YOU WON!!!</h1>
             <h1>CONGRATULATIONS BlACK HOLE FORCES</h1>
             <h1>YOU WON!!!</h1>
         <h1>DRAW</h1>
-        <button>Play Again?</button>
+        <button id="newGame">Play Again?</button>
     </section>
 </body>
 </html>
