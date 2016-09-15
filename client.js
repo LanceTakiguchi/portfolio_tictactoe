@@ -86,7 +86,7 @@ function makeBoard (boardSize) {
         for (var j = 0; j < boardSize; j++) {
             var boardCell = $("<td>", {
                 id: 'cell_' + i + '_' + j,
-                boardCell: i,
+                boardCol: i,
                 boardRow: j,
                 class: 'board_' + boardSize
             }).css({
@@ -94,12 +94,13 @@ function makeBoard (boardSize) {
                 width: cell_size_percent
             });
             boardCell.on("click", function () {
-                console.log("click", $(this).attr('boardCell') + ',' + $(this).attr('boardRow'));
+                console.log("click", $(this).attr('boardCol') + ',' + $(this).attr('boardRow'));
+                var cellClicked = $(this).attr('boardCol') + ',' + $(this).attr('boardRow');
 
                 var playingField = firebase.database().ref('playingField');
 
                 playingField.set({
-                    Player1: $(this).attr('boardCell') + ',' + $(this).attr('boardRow'),
+                    Player1: cellClicked,
                     Player2: ""
                 });
 
