@@ -7,7 +7,7 @@
  Prompt: https://github.com/Learning-Fuze/c10_tictactoe/blob/master/README.md
  */
 // ** GLOBAL VARIABLES
-var player_1_turn = null; // ** A boolean variable that will tell if it is the first players turn, or if false, the second player's turn
+var player_turn = null; // ** A number variable that will tell if it is the first players turn, or if it is the second player's turn
 var to_win_number_condition = null; //** A number variable that will tell many pieces in a column you need win
 var coin_toss_winner = null; //** A number variable that tells which player one the coin toss, player 1 or player 2
 var board_size = null; //** A number variable that holds how many columns and rows the game will have will have
@@ -36,16 +36,16 @@ function win_condition(set_number_to_win){
     return to_win_number_condition;
 }
 /**
- * Changes the global player_1_turn variable into the opposite value
- * @return {boolean} Returns indicate's current player's turn
+ * Changes the global player_turn variable into the opposite value
+ * @return {number} Returns indicate's current player's turn
  */
 function turn_switch(){
-    if(player_1_turn){
-        player_1_turn = false;
+    if(player_turn == 1){
+        player_turn = 2;
     }else{
-        player_1_turn = true;
+        player_turn = 1;
     }
-    return player_1_turn;
+    return player_turn;
 }
 /**
  * If asked, sets the number of columns/rows on the game board. Always returns what the board size is.
