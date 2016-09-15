@@ -7,12 +7,43 @@
  Prompt: https://github.com/Learning-Fuze/c10_tictactoe/blob/master/README.md
  */
 // ** GLOBAL VARIABLES
-var player_1_turn = null; // ** A boolean variable that will tell if it is the first players turn, or if false, the second player's turn
+var player_turn = null; // ** A number variable that will tell if it is the first players turn, or if it is the second player's turn
 var to_win_number_condition = null; //** A number variable that will tell many pieces in a column you need win
 var coin_toss_winner = null; //** A number variable that tells which player one the coin toss, player 1 or player 2
 var board_size = null; //** A number variable that holds how many columns and rows the game will have will have
 var board_2d_array = null; //**An array that holds arrays (the columns) where each nested array holds row values
+// ** FUNCTIONS
+/**
+ * Sets up the game, given starting conditions
+ * @param {number} chosen_size What size is the board (3x3, 9x9, 20x20)
+ * @return {Object[]} The board empty that the game will start on
+ */
+function setup_game(chosen_size){
+    player_turn = coin_toss(true); //** Find out what who the starting player is with a coin_toss.
+    var size = what_board_size(chosen_size); // ** Save locally and globally what the board size is.
+    win_condition(random_condition(size)); //** Save as a global variable how many pieces in a row is needed to win.
+    board_2d_array = create_board(size); // ** Save globally the board to be played on.
+    return board_2d_array; // ** Return the new empty board that was set to choose_size.
 
+}
+/**
+ * Updates the game. First sees if the inputted move is valid, or else it rejects the move. It then updates the board and checks if there is a winner yet. Returns all the processed information
+ * @param {Object[]} board The current game board.
+ * @param {number} column The column inputted by a player.
+ * @param {number} row The row inputted by a player.
+ * @return {{valid: boolean, column: number, row: number, game_state: number}} An object that tells if the move was valid, number of columns, number of rows, state of the game (if there is a winner, tie, or if the game is ongoing)
+ */
+function update_game(board, column, row){
+    var update = {valid: null, column: column, row: row, game_state: 0};
+    update.valid = valid_move(board, column, row); // ** check to see if the move is legal
+    if(!update.valid){ // ** If the move was invalid, return the update as is as when it sees valid as false, it will ignore the move
+        return update; //** NOTE: ignore type error, it will be a boolean
+    }
+    set_piece(board, player_turn, column, row);
+    update.game_state = check_for_win(board, to_win_number_condition);
+    turn_switch();
+    return update; //** NOTE: ignore type error, it will be a boolean
+}
 /**
  * Simulates a coin flip if given a true parameter. Whenever calls, returns the winner
  *@param {boolean} do_flip A optional parameter that if set to true, will simulate a coin flip
@@ -25,6 +56,15 @@ function coin_toss(do_flip){
     return coin_toss_winner; //** Returns what the coin_toss result was
 }
 /**
+ * Randomly generates a win condition
+ * @param {number} board_size
+ * @return {number} a random number between 3 and the board_size
+ */
+function random_condition(board_size){
+    var high_bound = board_size - 3; // ** 3 is the lowest value it could possibly be
+    return Math.floor(Math.random() * (high_bound + 1) + 3);
+}
+/**
  * If asked, sets the number of pieces in a column needed to win. Always returns the number needed to win.
  * @param {number} set_number_to_win A number that if passed resets the global variable.
  * @return {number} Returns the number in a column needed to win.
@@ -34,6 +74,18 @@ function win_condition(set_number_to_win){
         to_win_number_condition = set_number_to_win;
     }
     return to_win_number_condition;
+}
+/**
+ * Changes the global player_turn variable into the opposite value
+ * @return {number} Returns indicate's current player's turn
+ */
+function turn_switch(){
+    if(player_turn == 1){
+        player_turn = 2;
+    }else{
+        player_turn = 1;
+    }
+    return player_turn;
 }
 /**
  * If asked, sets the number of columns/rows on the game board. Always returns what the board size is.
@@ -91,21 +143,17 @@ function set_piece(board, player, column, row){
  * @param {Object[]} board A 2d array that is the board to search for a winning streak
  * @param {number} win_condition A number that tells how many in a column in order to win
  * @return {number} 0 = No winner yet, 1 = player 1 has won, 2 = player 2 has won, -1 = a tie
- * Note: indexing north: column, decreasing row
- * Note: indexing north-east: increasing column, decreasing row
  * Note: indexing east: increasing column, row
  * Note: indexing south-east: increasing column, increasing row
  * Note: indexing south: column, increasing row
  * Note: indexing south-west: decreasing column, increasing row
- * Note: indexing west: decreasing column, row
- * Note: indexing north-west: decreasing column, decreasing row
  */
 function check_for_win(board, win_condition){
     /**
-     * Checks to see if the value in the selected board space is the placeholder, 0
-     * @param outer column index
-     * @param inner row index
-     * @return {boolean}
+     * Checks to see if the value in the selected cell is the placeholder, 0.
+     * @param {number} outer column index.
+     * @param {number} inner row index.
+     * @return {boolean} Tells if the value cell was zero (true) or not (false)
      */
     function zero_test(outer, inner){
         return board[outer][inner] === 0;
