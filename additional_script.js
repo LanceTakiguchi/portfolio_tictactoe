@@ -3,6 +3,7 @@
 
 var hasPlayer = false;
 var playerPiece = null;
+var liveBoard;
 ///APPLY CLICK HANDLERS ON LOAD
 $(document).ready(function () {
     applyClickHandlers();
@@ -19,10 +20,6 @@ function applyClickHandlers() {
 }
 ////SHOW WHAT BUTTON IS PRESSED
 function selectedButton() {
-
-    $(this).addClass("disabledButton");
-
-
     $(this).toggleClass("selected");
 }
 ////
@@ -40,6 +37,8 @@ function startTheGame() {
     $("#gameplay_area").toggleClass("hide");
     if (player_turn === 1){
         $("#team2_display").toggleClass("turn");
+    } else{
+        $("#team1_display").toggleClass("turn");
     }
 }
 ///APPLY CLICK HANDLERS TO TABLE
@@ -48,23 +47,23 @@ function applyTableClickHandlers() {
 }
 ////FUNCTION TO PLACE PIECE ON BOARD
 function placePiece() {
-    update_game();
     if (player_turn === 1) {
         playerPiece = $("<img>").attr({
             src: "assets/CO1tile.png"
         });
-        turn_switch();
         $("#team2_display").toggleClass("turn");
         $("#team1_display").toggleClass("turn");
     } else{
         playerPiece = $("<img>").attr({
             src: "assets/CO2tile.png"
         });
-        turn_switch();
         $("#team2_display").toggleClass("turn");
         $("#team1_display").toggleClass("turn");
     }
     $(this).append(playerPiece);
+    var row = $(this).attr("boardrow");
+    var col = $(this).attr("boardcol");
+    update_game(liveBoard, col, row);
 }
 ///FUNCTION TO START A NEW GAME
 function startNewGame(){
@@ -85,4 +84,8 @@ function resetVariable(){
     coin_toss_winner = null;
     board_size = null;
     board_2d_array = null;
+}
+//////
+function getSize(size) {
+    liveBoard =  setup_game(size);
 }

@@ -36,7 +36,6 @@ var rowEndParam = "</tr>";
 var tdStartEndParam = "<td></td>";
 
 function makeBoard (boardSize) {
-
     $("#board > tbody").html('');
     var cell_size_percent = 100 / boardSize + '%';
     for (var i = 0; i < boardSize; i++) {
@@ -64,7 +63,6 @@ function makeBoard (boardSize) {
                     Column: col,
                     Row: row
                 });
-
                 playingField.once('value').then(function (pieceLocation) {
                     var game = pieceLocation.val();
                 });
@@ -72,7 +70,8 @@ function makeBoard (boardSize) {
             boardRow.append(boardCell);
         }
         $("#board > tbody").append(boardRow);
-        setup_game(boardSize);
+        getSize(boardSize);
+        ///setup_game(boardSize);
     }
     applyTableClickHandlers();
 }
