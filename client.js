@@ -9,6 +9,7 @@
 
     // set the database reference
 var firebaseRef = firebase;
+var game = null;
 $(document).ready(function () {
 
 // Initialize Firebase
@@ -62,9 +63,9 @@ function makeBoard (boardSize) {
                     Second: "Player2"
                 });
                 playingField.on('value', function (pieceLocation) {
-                    var game = pieceLocation.val();
-                    console.log("game", game);
+                    game = pieceLocation.val();
                 });
+                console.log("game", game);
             });
             boardRow.append(boardCell);
         }
