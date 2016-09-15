@@ -1,3 +1,4 @@
+/*universal stylings*/
 @font-face {
     font-family: titleFont;
     src: url("assets/EmpanadaItalic.otf");
@@ -6,15 +7,34 @@
     font-family: buttonFont;
     src: url("assets/Empanada.otf");
 }
-
 *{
     font-family: titleFont, sans-serif;
 }
+body{
+    background: url("assets/1-32_overview_1.png");
+}
+button{
+    font-size: 3rem;
+    font-family: buttonFont, sans-serif;
+    margin-bottom: 2%;
+    padding: 1%;
+}
+button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+/*VARIABLE CLASSES*/
 .hide{
     display: none;
 }
-body{
-    background: url("assets/1-32_overview_1.png");
+.turn{
+opacity: 0;
+}
+.selected{
+    opacity: .5;
+}
+.disabledButton{
+    cursor: not-allowed;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 /* HEADER */
 header{
@@ -70,14 +90,15 @@ aside#team2_display{
     float: right;
     background-color: rgba(120, 96, 104, 0.6);
 }
-
 .gameBoard{
     width: 60%;
     height: 100%;
     display: inline-block;
     background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    height: auto;
 }
-/******************/
+/*Main menu/victory state styling*/
 .menu{
     background-color: #6a6969;
     height: auto;
@@ -111,10 +132,6 @@ ul li{
 }
 ul{
     padding: inherit;
-}
-button{
-    font-size: 3rem;
-    font-family: buttonFont, sans-serif;
 }
 .highlight{
     display: inline-block;
