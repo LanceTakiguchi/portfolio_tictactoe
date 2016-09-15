@@ -62,7 +62,8 @@ function makeBoard (boardSize) {
 
                 playingField.set({
                     Column: col,
-                    Row: row
+                    Row: row,
+                    Who: num
                 });
 
                 playingField.once('value').then(function (pieceLocation) {
