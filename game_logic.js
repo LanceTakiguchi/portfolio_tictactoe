@@ -142,10 +142,10 @@ function set_piece(board, player, column, row){
  */
 function check_for_win(board, win_condition){
     /**
-     * Checks to see if the value in the selected board space is the placeholder, 0.
+     * Checks to see if the value in the selected cell is the placeholder, 0.
      * @param {number} outer column index.
      * @param {number} inner row index.
-     * @return {number} tells if the game is still going on (0), if there is a player who won (number 1 and greater), or if the game ended in a tie (-1).
+     * @return {boolean} Tells if the value cell was zero (true) or not (false)
      */
     function zero_test(outer, inner){
         return board[outer][inner] === 0;
