@@ -8,59 +8,18 @@
 <body>
     <header>
         <div id="team1">
-            <img src="assets/portrait.png">
-            <h1>TEAM 1</h1>
+            <h1>ORANGE STAR FORCES</h1>
         </div>
-        <h1>TIC TAC ADVANCE</h1>
+        <h1>TIC - TAC - WARS</h1>
         <div id="team2">
-            <img src="assets/portrait.png">
-            <h1>TEAM 1</h1>
+            <h1>BLACK HOLE FORCES</h1>
         </div>
     </header>
-    <main>
-        <div class="space">
-            <img src="assets/tank.png">
-        </div>
-        <div class="space">
-            <img src="assets/tank.png">
-        </div>
-        <div class="space">
-            <img src="assets/tank.png">
-        </div>
-        <div class="space">
-            <img src="assets/tank.png">
-        </div>
-        <div class="space">
-            <img src="assets/tank.png">
-        </div>
-        <div class="space">
-            <img src="assets/tank.png">
-        </div>
-        <div class="space">
-            <img src="assets/tank.png">
-        </div>
-        <div class="space">
-            <img src="assets/tank.png">
-        </div>
-        <div class="space">
-            <img src="assets/tank.png">
-        </div>
-    </main>
-    <section class="menu">
-        <h1>TIC TAC ADVANCE</h1>
-        <section>
-            <div>
-                <p>Player One:</p>
-                <input type="text" name="">
-            </div>
-            <div>
-                <p>Player Two:</p>
-                <input type="text" name="">
-            </div>
-        </section>
+    <section class="menu hide">
+        <h1>TIC - TAC - WARS</h1>
         <section>
             <ul>
-                <li>Choose your board size</li>
+                <li>Choose your board size:</li>
                 <li>
                     <button type="button">3x3</button>
                 </li>
@@ -70,29 +29,80 @@
                 <li>
                     <button type="button">20x20</button>
                 </li>
+                <li>Number of Players:</li>
+                <li>
+                    <button type="button">2</button>
+                    <button type="button">4</button>
+                </li>
             </ul>
         </section>
         <section>
-            <h1>Pick your CO</h1>
-            <ul>
-                <li>
-                    <img src="assets/tank.png">
-                </li>
-                <li>
-                    <img src="assets/tank.png">
-                </li>
-                <li>
-                    <img src="assets/tank.png">
-                </li>
-                <li>
-                    <img src="assets/tank.png">
-                </li>
-            </ul>
+            <h1>Pick your CO:</h1>
+            <div id="coSelect">
+                <img src="assets/CO1.png" height="338px">
+                <img src="assets/CO2.png" height="338px">
+                <img src="assets/CO3.png">
+                <img src="assets/CO4.png">
+            </div>
         </section>
     </section>
-    <section class="menu">
-        <h1>PLAYER 1 WINS!</h1>
-        <h1>PLAYER 2 WINS!</h1>
+    <main>
+        <aside id="team1_display">
+            <p>First Players Turn</p>
+            <img src="assets/CO1.png" height="338px">
+        </aside>
+        <div class="gameBoard">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+            <img src="assets/CO1tile.png">
+        </div>
+        <aside id="team2_display">
+            <p>Second Players Turn</p>
+            <img src="assets/CO3.png">
+        </aside>
+    </main>
+    <section class="menu hide">
+            <h1>CONGRATULATIONS ORANGE STAR FORCES</h1>
+            <h1>YOU WON!!!</h1>
+            <h1>CONGRATULATIONS BlACK HOLE FORCES</h1>
+            <h1>YOU WON!!!</h1>
         <h1>DRAW</h1>
         <button>Play Again?</button>
     </section>
