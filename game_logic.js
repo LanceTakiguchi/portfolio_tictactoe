@@ -38,7 +38,7 @@ function update_game(board, column, row){
     if(!update.valid){ // ** If the move was invalid, return the update as is as when it sees valid as false, it will ignore the move
         return update; //** NOTE: ignore type error, it will be a boolean
     }
-    set_piece(board, player_turn, column, row);
+    set_piece(board, player_turn, column, row); // ** Put the piece onto the board
     update.game_state = check_for_win(board, to_win_number_condition);
     turn_switch();
     return update; //** NOTE: ignore type error, it will be a boolean
@@ -165,11 +165,11 @@ function check_for_win(board, win_condition){
      * @return {boolean} Tells if there was a winning amount of pieces in a column or not
      */
     function check_south(player, initial_column, initial_row){
-        if(!(initial_column <= board_size - win_condition)) { //** if the starting column will eventually be checking out of bounds
+        if(!(initial_row <= board_size - win_condition)) { //** if the starting column will eventually be checking out of bounds
             return false;
         }
         var count_correct = 0; // ** Holds how many in a column are the same as the player number being checked for
-        for(;initial_row <= board_size; initial_row++){
+        for(;initial_row < board_size; initial_row++){
             if(board[initial_column][initial_row] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
@@ -192,7 +192,7 @@ function check_for_win(board, win_condition){
             return false;
         }
         var count_correct = 0; // ** Holds how many in a column are the same as the player number being checked for
-        for(;initial_column <= board_size; initial_column++){
+        for(;initial_column < board_size; initial_column++){
             if(board[initial_column][initial_row] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
@@ -215,7 +215,7 @@ function check_for_win(board, win_condition){
             return false;
         }
         var count_correct = 0; // ** Holds how many in a column are the same as the player number being checked for
-        for(;initial_row <= board_size && initial_column <= board_size; initial_row++, initial_column++){
+        for(;initial_row < board_size && initial_column < board_size; initial_row++, initial_column++){
             if(board[initial_column][initial_row] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
@@ -238,7 +238,7 @@ function check_for_win(board, win_condition){
         if(!(initial_column >= win_condition - 1) && !(initial_row <= board_size - win_condition)) { // ** Checking that the cell we are checking is west enough that we aren't checking for the win condition off the board
             return false;
         }// ** The column is too west relative to the win condition to ever westerly be true.
-        for(;initial_row <= board_size && initial_column >= 0; initial_row++, initial_column--){
+        for(;initial_row < board_size && initial_column >= 0; initial_row++, initial_column--){
             if(board[initial_column][initial_row] !== player){ //** If the spot we are looking at has a piece that is not the same as the player we care about
                 return false;
             }
