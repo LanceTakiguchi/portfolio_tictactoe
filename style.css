@@ -73,7 +73,7 @@ header h1{
 }
 /*GAMEBOARD*/
 main{
-    height: 80vh;
+    height: 1000px;
     background: rgba(0, 0, 0, 0.6);
 }
 aside{
@@ -161,6 +161,10 @@ ul{
 #board > tbody{
     width: 100%;
 }
-.board_9, .board_20 > img{
+.board_9 > img{
     width: 100%;
+    height: 100%;
+}
+.board_20{
+    height: 100%;
 }
