@@ -36,6 +36,18 @@ function win_condition(set_number_to_win){
     return to_win_number_condition;
 }
 /**
+ * Changes the global player_1_turn variable into the opposite value
+ * @return {boolean} Returns indicate's current player's turn
+ */
+function turn_switch(){
+    if(player_1_turn){
+        player_1_turn = false;
+    }else{
+        player_1_turn = true;
+    }
+    return player_1_turn;
+}
+/**
  * If asked, sets the number of columns/rows on the game board. Always returns what the board size is.
  * @param {number} set_board_size A number that sets the number of columns/rows the board will have.
  * @return {number} Returns the number of columns/rows are on the board.
@@ -91,14 +103,10 @@ function set_piece(board, player, column, row){
  * @param {Object[]} board A 2d array that is the board to search for a winning streak
  * @param {number} win_condition A number that tells how many in a column in order to win
  * @return {number} 0 = No winner yet, 1 = player 1 has won, 2 = player 2 has won, -1 = a tie
- * Note: indexing north: column, decreasing row
- * Note: indexing north-east: increasing column, decreasing row
  * Note: indexing east: increasing column, row
  * Note: indexing south-east: increasing column, increasing row
  * Note: indexing south: column, increasing row
  * Note: indexing south-west: decreasing column, increasing row
- * Note: indexing west: decreasing column, row
- * Note: indexing north-west: decreasing column, decreasing row
  */
 function check_for_win(board, win_condition){
     /**
