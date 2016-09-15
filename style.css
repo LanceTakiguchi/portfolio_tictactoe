@@ -27,7 +27,7 @@ button:hover{
     display: none;
 }
 .turn{
-opacity: 0;
+    opacity: 0;
 }
 .selected{
     opacity: .5;
@@ -151,7 +151,7 @@ ul{
 .board_20 {  }
 #board td {
     background-color: white;
-    padding: 10px;
+    /* padding: 10px; */
     border: 1px solid black;
 }
 #board{
@@ -159,5 +159,8 @@ ul{
     width: 100%;
 }
 #board > tbody{
+    width: 100%;
+}
+.board_9, .board_20 > img{
     width: 100%;
 }
