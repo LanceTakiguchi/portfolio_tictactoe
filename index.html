@@ -3,10 +3,12 @@
 <head>
     <title>TIC TAC WARS</title>
     <link rel="stylesheet" href="style.css">
+
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
     <script src="game_logic.js"></script>
     <script src="additional_script.js"></script>
+
 </head>
 <body>
     <header>
@@ -24,13 +26,13 @@
             <ul>
                 <li>Choose your board size:</li>
                 <li>
-                    <button type="button">3x3</button>
+                    <button type="button" id="3x3" onclick="makeBoard(3)">3x3</button>
                 </li>
                 <li>
-                    <button type="button">9x9</button>
+                    <button type="button" id="9x9" onclick="makeBoard(9)">9x9</button>
                 </li>
                 <li>
-                    <button type="button">20x20</button>
+                    <button type="button" id="20x20" onclick="makeBoard(20)">20x20</button>
                 </li>
                 <li>Number of Players:</li>
                 <li>
@@ -64,6 +66,24 @@
             <img src="assets/CO1tile.png">
         </aside>
         <div class="gameBoard">
+
+
+
+
+                <table id="board">
+                    <tbody></tbody>
+                </table>
+
+
+
+
+
+
+
+
+
+
+
         </div>
         <aside id="team2_display">
             <p>Second Players Turn</p>
@@ -79,5 +99,6 @@
         <h1>DRAW</h1>
         <button>Play Again?</button>
     </section>
+    <script src="script_handler.js"></script>
 </body>
 </html>
