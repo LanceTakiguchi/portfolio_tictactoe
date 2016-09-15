@@ -96,7 +96,6 @@ aside#team2_display{
     display: inline-block;
     background: rgba(0, 0, 0, 0.6);
     text-align: center;
-    height: auto;
 }
 /*Main menu/victory state styling*/
 .menu{
@@ -107,23 +106,15 @@ aside#team2_display{
 section h1{
     text-align: center;
     margin: auto;
-    font-size: 6rem;
+    font-size: 3rem;
 }
 section div{
     padding: 1%;
-    margin: 1%;
 }
 div > p {
     display: inline;
     font-size: 3rem;
     margin: 6%;
-}
-input{
-    height: 2rem;
-    width: inherit;
-    float: right;
-    margin: 2%;
-    font-size: xx-large;
 }
 ul li{
     display: inline;
@@ -136,44 +127,28 @@ ul{
 .highlight{
     display: inline-block;
 }
-.highlight img:hover {
+.highlight:hover {
     opacity: .5;
 }
-
-
-
-
-
-
-.cell
-{
+.highlight > img:last-of-type{
+    display: block;
+    margin: auto;
+}
+/*GAMEBOARD TABLE PROPERTIES*/
+.cell {
     position: absolute;
     width: 100px;
     height: 100px;
     border: 1px solid black;
     background-color: white;
 }
-.cell:hover
-{
+.cell:hover {
     background-color: blue;
 }
-
-
 /*table cell classes*/
-.board_3{
-
-
-}
-
-.board_9 {
-
-
-}
-
-.board_20 {
-
-}
-
+.board_3{  }
+.board_9 {  }
+.board_20 {  }
 #board td {
     background-color: white;
     padding: 10px;
