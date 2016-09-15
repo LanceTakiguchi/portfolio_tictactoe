@@ -21,12 +21,11 @@ var board_2d_array = null; //**An array that holds arrays (the columns) where ea
  */
 
 function setup_game(how_many_to_win, chosen_size){
-    // ** coin_toss
-    // ** player_turn = coin toss
-    // ** win_condition(how_many_to_win)
-    // ** what_board_size
-    // ** create_board
-    return board_2d_array;
+    player_turn = coin_toss(true); //** Find out what who the starting player is with a coin_toss
+    win_condition(how_many_to_win); //** Save as a global variable how many pieces in a row is needed to win
+    var size = what_board_size(chosen_size); // ** Save locally and globally what the board size is
+    board_2d_array = create_board(size); // ** Save globally the board to be played on
+    return board_2d_array; // ** Return the new empty board that was set to choose_size
 }
 /**
  * Simulates a coin flip if given a true parameter. Whenever calls, returns the winner
