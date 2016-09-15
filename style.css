@@ -75,18 +75,15 @@ aside#team2_display{
 .menu{
     background-color: #6a6969;
     height: auto;
+    text-align: center;
 }
 section h1{
     text-align: center;
-    width: 50%;
     margin: auto;
     font-size: 6rem;
 }
 section div{
-    display: inline-block;
-    width: 49%;
     padding: 1%;
-    position: relative;
     margin: 1%;
 }
 div > p {
@@ -108,7 +105,4 @@ ul li{
 }
 button{
     font-size: 3rem;
-}
-#coSelect{
-    width: 100%;
 }
