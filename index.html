@@ -3,13 +3,15 @@
 <head>
     <title>TIC TAC WARS</title>
     <link rel="stylesheet" href="style.css">
+<<<<<<< HEAD
     <script src="https://www.gstatic.com/firebasejs/3.0.4/firebase.js"></script>
+=======
+>>>>>>> 75f5442ec4da4bc411fcc1a0cc7798e82bc023c8
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
     <script src="game_logic.js"></script>
     <script src="client.js"></script>
     <script src="additional_script.js"></script>
-
 </head>
 <body>
     <header>
@@ -21,7 +23,7 @@
             <h1>BLACK HOLE FORCES</h1>
         </div>
     </header>
-    <section class="menu">
+    <section class="menu" id="setUpMenu">
         <h1>CHOOSE YOUR SETUP</h1>
         <section>
             <ul>
@@ -37,36 +39,40 @@
                 </li>
                 <li>Number of Players:</li>
                 <li>
-                    <button type="button">2</button>
-                    <button type="button">4</button>
+                    <button type="button" class="playerCount">2</button>
+                    <button type="button" class="playerCount">4</button>
                 </li>
             </ul>
         </section>
         <section>
             <h1>Choose your CO:</h1>
             <div id="coSelect">
-                <div class="highlight">
+                <div class="highlight" id="co1">
                     <img src="assets/CO1.png" height="338px">
+                    <img src="assets/CO1tile.png">
                 </div>
-                <div class="highlight">
+                <div class="highlight" id="co2">
                     <img src="assets/CO2.png" height="338px">
+                    <img src="assets/CO2tile.png">
                 </div>
-                <div class="highlight">
+                <div class="highlight" id="co3">
                     <img src="assets/CO3.png">
+                    <img src="assets/CO3tile.png">
                 </div>
-                <div class="highlight">
+                <div class="highlight" id="co4">
                     <img src="assets/CO4.png">
+                    <img src="assets/CO4tile.png">
                 </div>
             </div>
         </section>
+        <button type="button" id="startGame">GO!!</button>
     </section>
     <main id="gameplay_area">
         <aside id="team1_display">
-            <p>First Players Turn</p>
-            <img src="assets/CO1.png" height="338px"><br>
-            <img src="assets/CO1tile.png">
+            <p>Orange Players Turn</p>
         </aside>
         <div class="gameBoard">
+<<<<<<< HEAD
 
 
 
@@ -81,11 +87,14 @@
 
 
 
+=======
+            <table id="board">
+                <tbody></tbody>
+            </table>
+>>>>>>> 75f5442ec4da4bc411fcc1a0cc7798e82bc023c8
         </div>
         <aside id="team2_display">
-            <p>Second Players Turn</p>
-            <img src="assets/CO3.png"><br>
-            <img src="assets/CO3tile.png">
+            <p>Black Players Turn</p>
         </aside>
     </main>
     <section class="menu">
