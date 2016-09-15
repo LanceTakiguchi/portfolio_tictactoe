@@ -29,10 +29,6 @@ $(document).ready(function () {
         // ...
     });
 
-    playingField.on('value', function (snapshot) {
-        // set variable to show here?
-    });
-
 });
 
 var rowStartParam = "<tr>";
@@ -62,6 +58,16 @@ function makeBoard (boardSize) {
                 playingField.set({
                     Player1: cellClicked,
                     Player2: ""
+                });
+
+                playingField.once('value').then(function (snapshot) {
+                    console.log(snapshot.val());
+                    game = snapshot.val();
+                });
+
+                playingField.on('value', function (snapshot) {
+                    console.log('update!',snapshot.val());
+                    game = snapshot.val();
                 });
 
             });
