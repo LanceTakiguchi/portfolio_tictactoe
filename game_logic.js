@@ -15,33 +15,32 @@ var board_2d_array = null; //**An array that holds arrays (the columns) where ea
 // ** FUNCTIONS
 /**
  * Sets up the game, given starting conditions
- * @param {number} how_many_to_win How many pieces need to be in a row to win
  * @param {number} chosen_size What size is the board (3x3, 9x9, 20x20)
  * @return {Object[]} The board empty that the game will start on
  */
-function setup_game(how_many_to_win, chosen_size){
-    player_turn = coin_toss(true); //** Find out what who the starting player is with a coin_toss
-    win_condition(how_many_to_win); //** Save as a global variable how many pieces in a row is needed to win
-    var size = what_board_size(chosen_size); // ** Save locally and globally what the board size is
-    board_2d_array = create_board(size); // ** Save globally the board to be played on
-    return board_2d_array; // ** Return the new empty board that was set to choose_size
+function setup_game(chosen_size){
+    player_turn = coin_toss(true); //** Find out what who the starting player is with a coin_toss.
+    var size = what_board_size(chosen_size); // ** Save locally and globally what the board size is.
+    win_condition(random_condition(size)); //** Save as a global variable how many pieces in a row is needed to win.
+    board_2d_array = create_board(size); // ** Save globally the board to be played on.
+    return board_2d_array; // ** Return the new empty board that was set to choose_size.
+
 }
 /**
  * Updates the game. First sees if the inputted move is valid, or else it rejects the move. It then updates the board and checks if there is a winner yet. Returns all the processed information
  * @param {Object[]} board The current game board.
- * @param {number} how_win The number of pieces in a row needed to win.
  * @param {number} column The column inputted by a player.
  * @param {number} row The row inputted by a player.
  * @return {{valid: boolean, column: number, row: number, game_state: number}} An object that tells if the move was valid, number of columns, number of rows, state of the game (if there is a winner, tie, or if the game is ongoing)
  */
-function update_game(board, how_win, column, row){
+function update_game(board, column, row){
     var update = {valid: null, column: column, row: row, game_state: 0};
     update.valid = valid_move(board, column, row); // ** check to see if the move is legal
     if(!update.valid){ // ** If the move was invalid, return the update as is as when it sees valid as false, it will ignore the move
         return update; //** NOTE: ignore type error, it will be a boolean
     }
     set_piece(board, player_turn, column, row);
-    update.game_state = check_for_win(board, how_win);
+    update.game_state = check_for_win(board, to_win_number_condition);
     turn_switch();
     return update; //** NOTE: ignore type error, it will be a boolean
 }
@@ -55,6 +54,15 @@ function coin_toss(do_flip){
         coin_toss_winner = Math.floor(Math.random() * 2) + 1; //** Random coin flip
     }
     return coin_toss_winner; //** Returns what the coin_toss result was
+}
+/**
+ * Randomly generates a win condition
+ * @param {number} board_size
+ * @return {number} a random number between 3 and the board_size
+ */
+function random_condition(board_size){
+    var high_bound = board_size - 3; // ** 3 is the lowest value it could possibly be
+    return Math.floor(Math.random() * (high_bound + 1) + 3);
 }
 /**
  * If asked, sets the number of pieces in a column needed to win. Always returns the number needed to win.
