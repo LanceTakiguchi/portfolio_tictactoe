@@ -12,6 +12,7 @@ function applyClickHandlers() {
     $("#co3").click(selectGameTiles);
     $("#co4").click(selectGameTiles);
     $("#startGame").click(startTheGame);
+    $("td").click(placePiece);
 }
 
 function selectedButton() {
@@ -25,9 +26,12 @@ function selectGameTiles() {
         $(this).appendTo("#team1_display");
     }
     hasPlayer = true;
-    ///$(this).appendTo("#team1_display").toggleClass("selected");
-
 }
 function startTheGame() {
     $("#setUpMenu").addClass("hide");
 }
+
+function placePiece() {
+    $(this).append();
+}
+

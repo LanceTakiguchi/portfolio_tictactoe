@@ -106,11 +106,10 @@ aside#team2_display{
 section h1{
     text-align: center;
     margin: auto;
-    font-size: 6rem;
+    font-size: 3rem;
 }
 section div{
     padding: 1%;
-    margin: 1%;
 }
 div > p {
     display: inline;
