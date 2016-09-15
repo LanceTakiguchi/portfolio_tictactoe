@@ -31,10 +31,6 @@ $(document).ready(function () {
 
 });
 
-var rowStartParam = "<tr>";
-var rowEndParam = "</tr>";
-var tdStartEndParam = "<td></td>";
-
 function makeBoard (boardSize) {
     $("#board > tbody").html('');
     var cell_size_percent = 100 / boardSize + '%';
@@ -62,7 +58,8 @@ function makeBoard (boardSize) {
                 playingField.set({
                     Column: col,
                     Row: row,
-                    Who: num
+                    First: "Player1",
+                    Second: "Player2"
                 });
                 playingField.once('value').then(function (pieceLocation) {
                     var game = pieceLocation.val();
