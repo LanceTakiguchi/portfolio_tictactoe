@@ -61,7 +61,7 @@ function makeBoard (boardSize) {
                     First: "Player1",
                     Second: "Player2"
                 });
-                playingField.once('value').then(function (pieceLocation) {
+                playingField.on('value', function (pieceLocation) {
                     var game = pieceLocation.val();
                     console.log("game", game);
                 });
