@@ -74,7 +74,7 @@ $(document).ready(function () {
 
 var rowStartParam = "<tr>";
 var rowEndParam = "</tr>";
-var tdStartEndParam = "<td></td>"
+var tdStartEndParam = "<td></td>";
 
 function makeBoard (boardSize) {
 
@@ -111,4 +111,5 @@ function makeBoard (boardSize) {
         $("#board > tbody").append(boardRow);
         setup_game(boardSize);
     }
+    applyTableClickHandlers();
 }

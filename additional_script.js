@@ -2,6 +2,7 @@
 //TODO: FUNCTION TO APPLY/TOGGLE CLASSES?
 var hasPlayer = false;
 var playerTurn = 1;
+var playerPiece;
 
 $(document).ready(function () {
     applyClickHandlers();
@@ -17,10 +18,6 @@ function applyClickHandlers() {
 }
 
 function selectedButton() {
-
-    $(this).addClass("disabledButton");
-}
-
     $(this).toggleClass("selected");
 }
 
@@ -40,12 +37,12 @@ function applyTableClickHandlers() {
 }
 function placePiece() {
     if (playerTurn === 1) {
-        var playerPiece = $("<img>").attr({
+        playerPiece = $("<img>").attr({
             src: "assets/CO1tile.png"
         });
         playerTurn = 2;
     } else{
-        var playerPiece = $("<img>").attr({
+        playerPiece = $("<img>").attr({
             src: "assets/CO2tile.png"
         });
         playerTurn = 1;
