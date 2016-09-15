@@ -2,6 +2,11 @@
     font-family: titleFont;
     src: url("assets/EmpanadaItalic.otf");
 }
+@font-face {
+    font-family: buttonFont;
+    src: url("assets/Empanada.otf");
+}
+
 *{
     font-family: titleFont, sans-serif;
 }
@@ -103,6 +108,16 @@ ul li{
     list-style: none;
     font-size: 3rem;
 }
+ul{
+    padding: inherit;
+}
 button{
     font-size: 3rem;
+    font-family: buttonFont, sans-serif;
+}
+.highlight{
+    display: inline-block;
+}
+.highlight img:hover {
+    opacity: .5;
 }
