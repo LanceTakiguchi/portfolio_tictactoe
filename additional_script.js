@@ -17,6 +17,10 @@ function applyClickHandlers() {
 }
 
 function selectedButton() {
+
+    $(this).addClass("disabledButton");
+}
+
     $(this).toggleClass("selected");
 }
 
