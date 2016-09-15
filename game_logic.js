@@ -12,7 +12,22 @@ var to_win_number_condition = null; //** A number variable that will tell many p
 var coin_toss_winner = null; //** A number variable that tells which player one the coin toss, player 1 or player 2
 var board_size = null; //** A number variable that holds how many columns and rows the game will have will have
 var board_2d_array = null; //**An array that holds arrays (the columns) where each nested array holds row values
+// ** FUNCTIONS
+/**
+ * Sets up the game, given starting conditions
+ * @param {number} how_many_to_win How many pieces need to be in a row to win
+ * @param {number} chosen_size What size is the board (3x3, 9x9, 20x20)
+ * @return {Object[]} The board empty that the game will start on
+ */
 
+function setup_game(how_many_to_win, chosen_size){
+    // ** coin_toss
+    // ** player_turn = coin toss
+    // ** win_condition(how_many_to_win)
+    // ** what_board_size
+    // ** create_board
+    return board_2d_array;
+}
 /**
  * Simulates a coin flip if given a true parameter. Whenever calls, returns the winner
  *@param {boolean} do_flip A optional parameter that if set to true, will simulate a coin flip
