@@ -19,6 +19,10 @@ function applyClickHandlers() {
 }
 ////SHOW WHAT BUTTON IS PRESSED
 function selectedButton() {
+
+    $(this).addClass("disabledButton");
+
+
     $(this).toggleClass("selected");
 }
 ////
