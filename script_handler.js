@@ -1,21 +1,35 @@
 /**
  * Created by Weizguy on 9/14/2016.
  */
+var rowStartParam = "<tr>";
+var rowEndParam = "</tr>";
+var tdStartEndParam = "<td></td>"
 
-function handleBtnClick(btnId){
-    switch (btnId) {
-        case ('3x3'):
-            create_board(3);
-            console.log("3x3 board created");
-            break;
-        case ('9x9'):
-            create_board(9);
-            console.log("9x9 board created");
-            break;
-        case ('20x20'):
-            create_board(20);
-            console.log("20x20 board created");
-            break;
+function makeBoard (boardSize) {
+/*dave*/
+    var boardRow = rowStartParam;
+    for (var i = 0; i < boardSize; i++) {
+        boardRow += tdStartEndParam;
+    }
+    boardRow += rowEndParam;
+    for (var j = 0; j < boardSize; j++) {
+        $("#board > tbody").append(boardRow);
+    }
+/*end dave*/
+/*dan*/
 
+/*end dan*/
+    switch(boardSize) {
+        case 3:
+            $('td').removeClass('nine').removeClass('twenty').addClass('three');
+            break;
+        case 9:
+            $('td').removeClass('three').removeClass('twenty').addClass('nine');
+            break;
+        case 20:
+            $('td').removeClass('three').removeClass('nine').addClass('twenty');
+            break;
     }
 }
+
+

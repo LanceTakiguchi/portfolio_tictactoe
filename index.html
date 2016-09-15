@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="game_logic.js"></script>
     <script src="client.js"></script>
-    <script src="script_handler.js"></script>
 </head>
 <body>
     <header>
@@ -25,13 +24,13 @@
             <ul>
                 <li>Choose your board size:</li>
                 <li>
-                    <button type="button" id="3x3" onclick="handleBtnClick('3x3')">3x3</button>
+                    <button type="button" id="3x3" onclick="makeBoard(3)">3x3</button>
                 </li>
                 <li>
-                    <button type="button" id="9x9" onclick="handleBtnClick('9x9')">9x9</button>
+                    <button type="button" id="9x9" onclick="makeBoard(9)">9x9</button>
                 </li>
                 <li>
-                    <button type="button" id="20x20" onclick="handleBtnClick('20x20')">20x20</button>
+                    <button type="button" id="20x20" onclick="makeBoard(20)">20x20</button>
                 </li>
                 <li>Number of Players:</li>
                 <li>
@@ -65,9 +64,22 @@
             <img src="assets/CO1tile.png">
         </aside>
         <div class="gameBoard">
-            <img src="assets/CO1tile.png">
-            <img src="assets/CO1tile.png">
-            <img src="assets/CO1tile.png">
+
+
+
+                <table id="board">
+                    <tbody></tbody>
+                </table>
+
+
+
+
+
+
+
+
+
+
         </div>
         <aside id="team2_display">
             <p>Second Players Turn</p>
@@ -83,5 +95,6 @@
         <h1>DRAW</h1>
         <button>Play Again?</button>
     </section>
+    <script src="script_handler.js"></script>
 </body>
 </html>
