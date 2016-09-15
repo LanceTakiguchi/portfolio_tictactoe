@@ -10,5 +10,5 @@ function applyClickHandlers() {
 }
 
 function selectedButton() {
-    $("button").addClass("selected");
+    $this.addClass("disabledButton");
 }
