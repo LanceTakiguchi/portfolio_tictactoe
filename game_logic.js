@@ -19,13 +19,31 @@ var board_2d_array = null; //**An array that holds arrays (the columns) where ea
  * @param {number} chosen_size What size is the board (3x3, 9x9, 20x20)
  * @return {Object[]} The board empty that the game will start on
  */
-
 function setup_game(how_many_to_win, chosen_size){
     player_turn = coin_toss(true); //** Find out what who the starting player is with a coin_toss
     win_condition(how_many_to_win); //** Save as a global variable how many pieces in a row is needed to win
     var size = what_board_size(chosen_size); // ** Save locally and globally what the board size is
     board_2d_array = create_board(size); // ** Save globally the board to be played on
     return board_2d_array; // ** Return the new empty board that was set to choose_size
+}
+/**
+ * Updates the game. First sees if the inputted move is valid, or else it rejects the move. It then updates the board and checks if there is a winner yet. Returns all the processed information
+ * @param {Object[]} board The current game board.
+ * @param {number} how_win The number of pieces in a row needed to win.
+ * @param {number} column The column inputted by a player.
+ * @param {number} row The row inputted by a player.
+ * @return {{valid: boolean, column: number, row: number, game_state: number}} An object that tells if the move was valid, number of columns, number of rows, state of the game (if there is a winner, tie, or if the game is ongoing)
+ */
+function update_game(board, how_win, column, row){
+    var update = {valid: null, column: column, row: row, game_state: 0};
+    update.valid = valid_move(board, column, row); // ** check to see if the move is legal
+    if(!update.valid){ // ** If the move was invalid, return the update as is as when it sees valid as false, it will ignore the move
+        return update; //** NOTE: ignore type error, it will be a boolean
+    }
+    set_piece(board, player_turn, column, row);
+    update.game_state = check_for_win(board, how_win);
+    turn_switch();
+    return update; //** NOTE: ignore type error, it will be a boolean
 }
 /**
  * Simulates a coin flip if given a true parameter. Whenever calls, returns the winner
@@ -124,10 +142,10 @@ function set_piece(board, player, column, row){
  */
 function check_for_win(board, win_condition){
     /**
-     * Checks to see if the value in the selected board space is the placeholder, 0
-     * @param outer column index
-     * @param inner row index
-     * @return {boolean}
+     * Checks to see if the value in the selected board space is the placeholder, 0.
+     * @param {number} outer column index.
+     * @param {number} inner row index.
+     * @return {number} tells if the game is still going on (0), if there is a player who won (number 1 and greater), or if the game ended in a tie (-1).
      */
     function zero_test(outer, inner){
         return board[outer][inner] === 0;
