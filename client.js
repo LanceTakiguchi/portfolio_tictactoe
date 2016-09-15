@@ -36,10 +36,7 @@ var rowEndParam = "</tr>";
 var tdStartEndParam = "<td></td>";
 
 function makeBoard (boardSize) {
-<<<<<<< HEAD
 
-=======
->>>>>>> 73d5d57b9efa9023bc88dc98e7f7d36f0411cf91
     $("#board > tbody").html('');
     var cell_size_percent = 100 / boardSize + '%';
     for (var i = 0; i < boardSize; i++) {
@@ -47,8 +44,8 @@ function makeBoard (boardSize) {
         for (var j = 0; j < boardSize; j++) {
             var boardCell = $("<td>", {
                 id: 'cell_' + i + '_' + j,
-                boardCol: i,
-                boardRow: j,
+                boardCol: j,
+                boardRow: i,
                 class: 'board_' + boardSize
             }).css({
                 height: cell_size_percent,
@@ -58,24 +55,19 @@ function makeBoard (boardSize) {
                 var cellClicked = $(this).attr('boardCol') + ',' + $(this).attr('boardRow');
                 var playingField = firebaseRef.database().ref('playingField');
 
+
+                var num = cellClicked.indexOf(",");
+                var col = cellClicked.substring(0, num);
+                var row = cellClicked.substring(num + 1);
+
                 playingField.set({
-                    Player1: cellClicked,
-                    Player2: ""
-                });
-<<<<<<< HEAD
-
-                playingField.once('value').then(function (snapshot) {
-                    console.log(snapshot.val());
-                    game = snapshot.val();
+                    Column: col,
+                    Row: row
                 });
 
-                playingField.on('value', function (snapshot) {
-                    console.log('update!',snapshot.val());
-                    game = snapshot.val();
+                playingField.once('value').then(function (pieceLocation) {
+                    var game = pieceLocation.val();
                 });
-
-=======
->>>>>>> 73d5d57b9efa9023bc88dc98e7f7d36f0411cf91
             });
             boardRow.append(boardCell);
         }
