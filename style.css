@@ -27,7 +27,7 @@ button:hover{
     display: none;
 }
 .turn{
-opacity: 0;
+    opacity: 0;
 }
 .selected{
     opacity: .5;

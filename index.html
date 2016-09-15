@@ -64,7 +64,7 @@
         </section>
         <button type="button" id="startGame">GO!!</button>
     </section>
-    <main id="gameplay_area">
+    <main id="gameplay_area" class="hide">
         <aside id="team1_display">
             <p>Orange Players Turn</p>
         </aside>
@@ -73,17 +73,17 @@
                 <tbody></tbody>
             </table>
         </div>
-        <aside id="team2_display">
+        <aside id="team2_display" class="turn">
             <p>Black Players Turn</p>
         </aside>
     </main>
-    <section class="menu">
+    <section class="menu" id="gameOver">
             <h1>CONGRATULATIONS ORANGE STAR FORCES</h1>
             <h1>YOU WON!!!</h1>
             <h1>CONGRATULATIONS BlACK HOLE FORCES</h1>
             <h1>YOU WON!!!</h1>
         <h1>DRAW</h1>
-        <button>Play Again?</button>
+        <button id="newGame">Play Again?</button>
     </section>
 </body>
 </html>

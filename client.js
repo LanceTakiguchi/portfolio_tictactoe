@@ -77,8 +77,6 @@ var rowEndParam = "</tr>";
 var tdStartEndParam = "<td></td>";
 
 function makeBoard (boardSize) {
-
-
     $("#board > tbody").html('');
     var cell_size_percent = 100 / boardSize + '%';
     for (var i = 0; i < boardSize; i++) {
@@ -103,8 +101,6 @@ function makeBoard (boardSize) {
                     Player1: cellClicked,
                     Player2: ""
                 });
-
-
             });
             boardRow.append(boardCell);
         }
