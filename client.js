@@ -1,5 +1,10 @@
 /**
- * Created by Weizguy on 9/14/2016.
+ Project Name: Tic-Tac-Toe
+ File Name: game_logic.js
+ Author: Lance Takiguchi, Collette Tamez, Dave Weizenegger
+ Date: 09/14/2016 Time: 09:54
+ Objective: Create a online game of TicTacToe
+ Prompt: https://github.com/Learning-Fuze/c10_tictactoe/blob/master/README.md
  */
 $(document).ready(function () {
 
