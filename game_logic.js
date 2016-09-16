@@ -40,6 +40,7 @@ function update_game(board, column, row){
     }
     set_piece(board, player_turn, column, row); // ** Put the piece onto the board
     update.game_state = check_for_win(board, to_win_number_condition);
+
     if (update.game_state > 0){ //** Checks if a player has won
         if (update.game_state === 1){ //** Checks if Player 1 wins
             $("#team1_display").removeClass("turn");
@@ -58,6 +59,7 @@ function update_game(board, column, row){
         $(".newGame").toggleClass("hide");
         $("<p>").text("DRAW!!!").appendTo("aside").addClass("won");
     }
+
     turn_switch();
     return update; //** NOTE: ignore type error, it will be a boolean
 }
@@ -158,13 +160,8 @@ function set_piece(board, player, column, row){
 }
 
 function update_firebase_board(board){
-    // playingField.set({
-    //     Column: col,
-    //     Row: row,
-    //     First: "Player1",
-    //     Second: "Player2"
-    // });
-    playingField.set({
+
+    db.set({
         fieldstate: board
     });
 }

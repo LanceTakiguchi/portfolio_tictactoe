@@ -52,15 +52,11 @@ function makeBoard (boardSize) {
             boardCell.on("click", function () {
                 var cellClicked = $(this).attr('boardCol') + ',' + $(this).attr('boardRow');
 
-
-
                 var num = cellClicked.indexOf(",");
                 var col = cellClicked.substring(0, num);
                 var row = cellClicked.substring(num + 1);
 
 
-
-                console.log("game", game);
             });
             boardRow.append(boardCell);
         }
@@ -71,8 +67,15 @@ function makeBoard (boardSize) {
     applyTableClickHandlers();
 }
 
-var playingField;
+var db;
 $(document).ready(function(){
+
+
+    db = firebaseRef.database().ref('playingField');
+    db.on('value', update_game_board);
+
+
     playingField = firebaseRef.database().ref('playingField');
     playingField.on('value', update_game_board);
+
 });
