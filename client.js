@@ -32,6 +32,8 @@ $(document).ready(function () {
 
 });
 
+
+
 function makeBoard (boardSize) {
     $("#board > tbody").html('');
     var cell_size_percent = 100 / boardSize + '%';
@@ -49,22 +51,15 @@ function makeBoard (boardSize) {
             });
             boardCell.on("click", function () {
                 var cellClicked = $(this).attr('boardCol') + ',' + $(this).attr('boardRow');
-                var playingField = firebaseRef.database().ref('playingField');
+
 
 
                 var num = cellClicked.indexOf(",");
                 var col = cellClicked.substring(0, num);
                 var row = cellClicked.substring(num + 1);
 
-                playingField.set({
-                    Column: col,
-                    Row: row,
-                    First: "Player1",
-                    Second: "Player2"
-                });
-                playingField.on('value', function (pieceLocation) {
-                    game = pieceLocation.val();
-                });
+
+
                 console.log("game", game);
             });
             boardRow.append(boardCell);
@@ -75,3 +70,9 @@ function makeBoard (boardSize) {
     }
     applyTableClickHandlers();
 }
+
+var playingField;
+$(document).ready(function(){
+    playingField = firebaseRef.database().ref('playingField');
+    playingField.on('value', update_game_board);
+})
