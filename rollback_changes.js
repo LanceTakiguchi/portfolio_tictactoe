@@ -138,12 +138,10 @@ function placePiece() {
             $("#team1_display").toggleClass("turn");
         }
         $(this).append(playerPiece);
-
     }
     if (save.game_state !== 0){ //** If the game is over, set the flag so that the next time this function is called, it will won't run
         game_over = true;
         player_turn = -1;
-
         if (save.game_state === -1){
             $("#team1_display").removeClass("turn");
             $("#team2_display").removeClass("turn");
