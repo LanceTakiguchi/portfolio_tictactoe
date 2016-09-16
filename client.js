@@ -9,6 +9,7 @@
 
     // set the database reference
 var firebaseRef = firebase;
+var game = null;
 $(document).ready(function () {
 
 // Initialize Firebase
@@ -31,9 +32,7 @@ $(document).ready(function () {
 
 });
 
-var rowStartParam = "<tr>";
-var rowEndParam = "</tr>";
-var tdStartEndParam = "<td></td>";
+
 
 function makeBoard (boardSize) {
     $("#board > tbody").html('');
@@ -52,20 +51,16 @@ function makeBoard (boardSize) {
             });
             boardCell.on("click", function () {
                 var cellClicked = $(this).attr('boardCol') + ',' + $(this).attr('boardRow');
-                var playingField = firebaseRef.database().ref('playingField');
+
 
 
                 var num = cellClicked.indexOf(",");
                 var col = cellClicked.substring(0, num);
                 var row = cellClicked.substring(num + 1);
 
-                playingField.set({
-                    Column: col,
-                    Row: row
-                });
-                playingField.once('value').then(function (pieceLocation) {
-                    var game = pieceLocation.val();
-                });
+
+
+                console.log("game", game);
             });
             boardRow.append(boardCell);
         }
@@ -75,3 +70,9 @@ function makeBoard (boardSize) {
     }
     applyTableClickHandlers();
 }
+
+var playingField;
+$(document).ready(function(){
+    playingField = firebaseRef.database().ref('playingField');
+    playingField.on('value', update_game_board);
+})
