@@ -144,10 +144,12 @@ function placePiece() {
         game_over = true;
         player_turn = -1;
 
-        $("#team1_display").removeClass("turn");
-        $("#team2_display").removeClass("turn");
-        $(".newGame").toggleClass("hide");
-        $("<p>").text("DRAW!!!").appendTo("aside").addClass("won");
+        if (save.game_state === -1){
+            $("#team1_display").removeClass("turn");
+            $("#team2_display").removeClass("turn");
+            $(".newGame").toggleClass("hide");
+            $("<p>").text("DRAW!!!").appendTo("aside").addClass("won");
+        }
     }
 }
 ///FUNCTION TO START A NEW GAME
