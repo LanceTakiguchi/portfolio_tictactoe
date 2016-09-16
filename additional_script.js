@@ -1,6 +1,4 @@
-//TODO: FUNCTION TO RESET VARIABLE
-//TODO: FUNCTION TO APPLY/TOGGLE CLASSES?
-
+////GLOBAL VARIABLES
 var hasPlayer = false;
 var playerPiece = null;
 var liveBoard = null;
@@ -8,7 +6,7 @@ var liveBoard = null;
 $(document).ready(function () {
     applyClickHandlers();
 });
-///HANDLERS TO BE APPLIED
+///FUNCTION TO APPLY CLICK HANDLERS TO DOM ELEMENTS
 function applyClickHandlers() {
     $("button").click(selectedButton);
     $("#co1").click(selectGameTiles);
@@ -18,11 +16,11 @@ function applyClickHandlers() {
     $("#startGame").click(startTheGame);
     $(".newGame").click(startNewGame);
 }
-////SHOW WHAT BUTTON IS PRESSED
+////SHOW USER A BUTTON HAS BEEN PRESSED
 function selectedButton() {
     $(this).toggleClass("selected");
 }
-////
+////FUNCTION TO DISPLAY "CO SELECT" ON GAME BOARD
 function selectGameTiles() {
     if(hasPlayer){
         $(this).appendTo("#team2_display");
