@@ -32,10 +32,6 @@ button:hover{
 .selected{
     opacity: .5;
 }
-.disabledButton{
-    cursor: not-allowed;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
 /* HEADER */
 header{
     width: 100%;
