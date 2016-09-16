@@ -80,6 +80,7 @@ function makeBoard (boardSize) {
 var hasPlayer = false;
 var playerPiece = null;
 var liveBoard = null;
+var game_over = false;
 ///APPLY CLICK HANDLERS ON LOAD
 $(document).ready(function () {
     applyClickHandlers();
@@ -123,6 +124,9 @@ function applyTableClickHandlers() {
 }
 ////FUNCTION TO PLACE PIECE ON BOARD
 function placePiece() {
+    if (game_over){ // ** Check to see if the game is already over
+        return;
+    }
     var row = $(this).attr("boardrow");
     var col = $(this).attr("boardcol");
     var save = update_game(liveBoard, col, row);
@@ -142,6 +146,10 @@ function placePiece() {
         }
         $(this).append(playerPiece);
     }
+    if (save.game_state !== 0){ //** If the game is over, set the flag so that the next time this function is called, it will won't run
+        game_over = true;
+    }
+
 }
 ///FUNCTION TO START A NEW GAME
 function startNewGame(){
@@ -164,6 +172,7 @@ function resetVariable(){
     board_size = null;
     board_2d_array = null;
     liveBoard = null;
+    game_over = false;
 }
 //////
 function getSize(size) {
