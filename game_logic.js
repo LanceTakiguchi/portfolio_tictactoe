@@ -140,13 +140,8 @@ function set_piece(board, player, column, row){
 }
 
 function update_firebase_board(board){
-    // playingField.set({
-    //     Column: col,
-    //     Row: row,
-    //     First: "Player1",
-    //     Second: "Player2"
-    // });
-    playingField.set({
+
+    db.set({
         fieldstate: board
     });
 }
@@ -155,7 +150,7 @@ function update_game_board(new_state){
     board_2d_array = new_state.val().fieldstate;
 
     for(var outer = 0; outer< board_2d_array.length; outer++){
-        for(var inner = 0; inner < board_2d_array[outer].length; inner++){
+        for(var inner = 0; inner < board_2d_array.length[outer]; inner++){
             var target_id = "#cell_"+outer+'_'+inner;
             $(target_id).text(board_2d_array[inner][outer]);
         }
