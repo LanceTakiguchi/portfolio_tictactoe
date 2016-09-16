@@ -7,10 +7,9 @@
  Prompt: https://github.com/Learning-Fuze/c10_tictactoe/blob/master/README.md
  */
 
-    // set the database reference
+// set the database reference
 var firebaseRef = firebase;
 $(document).ready(function () {
-
 // Initialize Firebase
     var config = {
         apiKey: "AIzaSyD73W8ic8oB_tuyCY7_E_sSWRBFv1qkBcQ",
@@ -20,7 +19,6 @@ $(document).ready(function () {
         messagingSenderId: "644619913847"
     };
     firebase.initializeApp(config);
-
     // check for anonymous login issues
     firebaseRef.auth().signInAnonymously().catch(function (error) {
         // Handle Errors here.
@@ -28,13 +26,11 @@ $(document).ready(function () {
         var errorMessage = error.message;
         // ...
     });
-
 });
-
 var rowStartParam = "<tr>";
 var rowEndParam = "</tr>";
 var tdStartEndParam = "<td></td>";
-
+///function to generate board based on user button press
 function makeBoard (boardSize) {
     $("#board > tbody").html('');
     var cell_size_percent = 100 / boardSize + '%';
@@ -53,12 +49,9 @@ function makeBoard (boardSize) {
             boardCell.on("click", function () {
                 var cellClicked = $(this).attr('boardCol') + ',' + $(this).attr('boardRow');
                 var playingField = firebaseRef.database().ref('playingField');
-
-
                 var num = cellClicked.indexOf(",");
                 var col = cellClicked.substring(0, num);
                 var row = cellClicked.substring(num + 1);
-
                 playingField.set({
                     Column: col,
                     Row: row
@@ -71,8 +64,8 @@ function makeBoard (boardSize) {
         }
         $("#board > tbody").append(boardRow);
         getSize(boardSize);
-        ///setup_game(boardSize);
     }
+    ////function to apply click handlers to table cells
     applyTableClickHandlers();
 }
 /////////////////////////////////////////////////////////////////////
@@ -81,17 +74,17 @@ var hasPlayer = false;
 var playerPiece = null;
 var liveBoard = null;
 var game_over = false;
-///APPLY CLICK HANDLERS ON LOAD
+///APPLY CLICK HANDLERS TO DOM ELEMENTS ON LOAD
 $(document).ready(function () {
     applyClickHandlers();
 });
-///FUNCTION TO APPLY CLICK HANDLERS TO DOM ELEMENTS
+///FUNCTION TO APPLY CLICK HANDLERS TO INDIVIDUAL DOM ELEMENTS
 function applyClickHandlers() {
     $("button").click(selectedButton);
     $("#co1").click(selectGameTiles);
-    $("#co2").click(selectGameTiles);
+    ///$("#co2").click(selectGameTiles);
     $("#co3").click(selectGameTiles);
-    $("#co4").click(selectGameTiles);
+    ////$("#co4").click(selectGameTiles);
     $("#startGame").click(startTheGame);
     $(".newGame").click(startNewGame);
 }
@@ -144,7 +137,7 @@ function placePiece() {
             $("#team2_display").toggleClass("turn");
             $("#team1_display").toggleClass("turn");
         }
-            $(this).append(playerPiece);
+        $(this).append(playerPiece);
 
     }
     if (save.game_state !== 0){ //** If the game is over, set the flag so that the next time this function is called, it will won't run
