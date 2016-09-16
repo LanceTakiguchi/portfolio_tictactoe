@@ -41,15 +41,6 @@ function update_game(board, column, row){
     set_piece(board, player_turn, column, row); // ** Put the piece onto the board
     update.game_state = check_for_win(board, to_win_number_condition);
     turn_switch();
-    if (update.game_state > 0){ //** Checks if a player has won
-        $(".newGame").toggleClass("hide");
-        $("<p>").text("YOU WON!").appendTo("aside").addClass("won");
-    } else if(update.game_state === -1){ //** Checks if there is a draw
-        $("#team1_display").removeClass("turn");
-        $("#team2_display").removeClass("turn");
-        $(".newGame").toggleClass("hide");
-        $("<p>").text("DRAW!!!").appendTo("aside").addClass("won");
-    }
     return update; //** NOTE: ignore type error, it will be a boolean
 }
 /**
@@ -159,7 +150,7 @@ function update_game_board(new_state){
     board_2d_array = new_state.val().fieldstate;
 
     for(var outer = 0; outer< board_2d_array.length; outer++){
-        for(var inner = 0; inner < board_2d_array.length[outer]; inner++){
+        for(var inner = 0; inner < board_2d_array[outer].length; inner++){
             var target_id = "#cell_"+outer+'_'+inner;
             $(target_id).text(board_2d_array[inner][outer]);
         }
