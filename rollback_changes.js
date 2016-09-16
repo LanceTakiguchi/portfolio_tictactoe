@@ -140,8 +140,10 @@ function placePiece() {
             $("#team2_display").toggleClass("turn");
             $("#team1_display").toggleClass("turn");
         }
-        $(this).append(playerPiece);
+            $(this).append(playerPiece);
+
     }
+
 }
 ///FUNCTION TO START A NEW GAME
 function startNewGame(){
