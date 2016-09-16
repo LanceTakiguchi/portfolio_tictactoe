@@ -35,10 +35,12 @@
                     <button type="button" id="20x20" onclick="makeBoard(20)">20x20</button>
                 </li>
                 <li>Number of Players:</li>
+                <!--
                 <li>
                     <button type="button" class="playerCount">2</button>
                     <button type="button" class="playerCount">4</button>
                 </li>
+                -->
             </ul>
         </section>
         <section>
@@ -48,18 +50,22 @@
                     <img src="assets/CO1.png" height="338px">
                     <img src="assets/CO1tile.png" id="co1tile">
                 </div>
+                <!--
                 <div class="highlight" id="co2">
                     <img src="assets/CO2.png" height="338px">
                     <img src="assets/CO2tile.png" id="co2tile">
                 </div>
+                -->
                 <div class="highlight" id="co3">
                     <img src="assets/CO3.png">
                     <img src="assets/CO3tile.png" id="co3tile">
                 </div>
+                <!--
                 <div class="highlight" id="co4">
                     <img src="assets/CO4.png">
                     <img src="assets/CO4tile.png" id="co41tile">
                 </div>
+                -->
             </div>
         </section>
         <button type="button" id="startGame">GO!!</button>
@@ -67,6 +73,7 @@
     <main id="gameplay_area" class="hide">
         <aside id="team1_display">
             <p>Orange Players Turn</p>
+            <button class="newGame hide">Play Again?</button>
         </aside>
         <div class="gameBoard">
             <table id="board">
@@ -75,15 +82,8 @@
         </div>
         <aside id="team2_display">
             <p>Black Players Turn</p>
+            <button class="newGame hide">Play Again?</button>
         </aside>
     </main>
-    <section class="menu" id="gameOver">
-            <h1>CONGRATULATIONS ORANGE STAR FORCES</h1>
-            <h1>YOU WON!!!</h1>
-            <h1>CONGRATULATIONS BlACK HOLE FORCES</h1>
-            <h1>YOU WON!!!</h1>
-        <h1>DRAW</h1>
-        <button id="newGame">Play Again?</button>
-    </section>
 </body>
 </html>
