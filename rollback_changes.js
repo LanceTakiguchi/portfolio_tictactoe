@@ -144,7 +144,8 @@ function placePiece() {
             $("#team2_display").toggleClass("turn");
             $("#team1_display").toggleClass("turn");
         }
-        $(this).append(playerPiece);
+            $(this).append(playerPiece);
+
     }
     if (save.game_state !== 0){ //** If the game is over, set the flag so that the next time this function is called, it will won't run
         game_over = true;
@@ -155,7 +156,6 @@ function placePiece() {
         $(".newGame").toggleClass("hide");
         $("<p>").text("DRAW!!!").appendTo("aside").addClass("won");
     }
-
 }
 ///FUNCTION TO START A NEW GAME
 function startNewGame(){
