@@ -69,6 +69,8 @@ function makeBoard (boardSize) {
 
 var db;
 $(document).ready(function(){
+
     db = firebaseRef.database().ref('playingField');
     db.on('value', update_game_board);
+
 });
