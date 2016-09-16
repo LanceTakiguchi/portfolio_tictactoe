@@ -123,23 +123,25 @@ function applyTableClickHandlers() {
 }
 ////FUNCTION TO PLACE PIECE ON BOARD
 function placePiece() {
-    if (player_turn === 1) {
-        playerPiece = $("<img>").attr({
-            src: "assets/CO1tile.png"
-        });
-        $("#team2_display").toggleClass("turn");
-        $("#team1_display").toggleClass("turn");
-    } else{
-        playerPiece = $("<img>").attr({
-            src: "assets/CO3tile.png"
-        });
-        $("#team2_display").toggleClass("turn");
-        $("#team1_display").toggleClass("turn");
-    }
-    $(this).append(playerPiece);
     var row = $(this).attr("boardrow");
     var col = $(this).attr("boardcol");
-    update_game(liveBoard, col, row);
+    var save = update_game(liveBoard, col, row);
+    if (save.valid) {
+        if (player_turn === 1) {
+            playerPiece = $("<img>").attr({
+                src: "assets/CO1tile.png"
+            });
+            $("#team2_display").toggleClass("turn");
+            $("#team1_display").toggleClass("turn");
+        } else {
+            playerPiece = $("<img>").attr({
+                src: "assets/CO3tile.png"
+            });
+            $("#team2_display").toggleClass("turn");
+            $("#team1_display").toggleClass("turn");
+        }
+        $(this).append(playerPiece);
+    }
 }
 ///FUNCTION TO START A NEW GAME
 function startNewGame(){
@@ -206,6 +208,7 @@ function update_game(board, column, row){
     var update = {valid: null, column: column, row: row, game_state: 0};
     update.valid = valid_move(board, column, row); // ** check to see if the move is legal
     if(!update.valid){ // ** If the move was invalid, return the update as is as when it sees valid as false, it will ignore the move
+
         return update; //** NOTE: ignore type error, it will be a boolean
     }
     set_piece(board, player_turn, column, row); // ** Put the piece onto the board
