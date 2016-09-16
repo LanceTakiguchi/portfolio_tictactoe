@@ -75,4 +75,4 @@ var playingField;
 $(document).ready(function(){
     playingField = firebaseRef.database().ref('playingField');
     playingField.on('value', update_game_board);
-})
+});
