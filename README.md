@@ -1,3 +1,58 @@
+# Tic Tac Wars
+* Date: 2017/03/07
+* Author: Lance Takiguchi
+* Description: A hackaton group project to make a Firebase 
+multiplayer Tic Tac Toe game, one to allow for play on different
+computers. Given we were crash course trying Firebase, we
+had to cut cross-computer feature last minute.
+
+## Live Link
+* http://lancetakiguchi.com/apps/sgt_app/
+## Portfolio
+* http://lancetakiguchi.com/
+
+![alt tag](http://lancetakiguchi.com/assets/images/apps/ttwars_app.png?raw=true "Tic Tac Wars team3 | Lance Takiguchi App")
+
+## Version team3
+* Date: 2017/03/07
+#### Description: Finalized, Presentation Version
+* Updated README to have links, a screenshot, a planned addtions section, learning section.
+* Upload project to github and website.
+
+## The Learning Experince
+This was a fun experience, and we learned much. We quickly decided
+on having an Advanced Wars theme and just split the work and did our own things
+: One on HTML & CSS, another for Firebase, and me on JS 
+logic. As a result, we had good difficulty combining our parts. 
+In the end, Firebase never worked how we needed it to, the HTML
+& CSS worked, but could use more polishing time, and the JavaScript
+was a nightmare spaghetti code for others to try to use. We did
+not win this hackathon, but it was entertaining to see our
+lack of teamwork and look forward to our next hackathon. 
+
+Looking back at this at this hackathon, I have learned that there is a
+need for pre-planning. We just started coding, which can work,
+especially given the time constant of about 48 hours, but planning
+most of it out helps me a ton. Figuring out all the features of the app,
+rating the importance and difficulty to decide the order of production.
+This helps the future become much more visible, and everyone knows
+what work is ahead of the team. It also de-stresses a seemingly
+large and monstrous task by cutting it up into small parts that you
+do know how to code.
+
+## Web Development Utilized 
+* Firebase
+* HTML
+* CSS
+* JavaScript
+* jQuery
+* git
+
+## Future Features
+* Application descriptions.
+* Display a message for non-desktop screens.
+* Add my contacts on a footer navbar.
+
 # c10_tictactoe
 
 ### REQUIREMENTS
