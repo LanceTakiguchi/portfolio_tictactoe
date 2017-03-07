@@ -48,10 +48,16 @@ do know how to code.
 * jQuery
 * git
 
+## Given More Time
+* Change theme to something with responsive assets
+* Fix Firebase server game play
+* Redo the JavaScript logic to make it simplier
+
 ## Future Features
 * Application descriptions.
 * Display a message for non-desktop screens.
 * Add my contacts on a footer navbar.
+
 
 # c10_tictactoe
 
